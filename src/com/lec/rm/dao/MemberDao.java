@@ -17,6 +17,8 @@ import com.lec.rm.dto.MemberDto;
 public class MemberDao {
 	public static final int SUCCESS = 1;
 	public static final int FAIL = 0;
+	public static final int EXIST = 0;
+	public static final int NONEXIST = 1;
 	private DataSource ds;
 	private MemberDao() {
 		try {
@@ -32,7 +34,7 @@ public class MemberDao {
 	}
 	// (1) mID 중복체크
 	public int midConfirm(String mid) {
-		int result = FAIL;
+		int result = EXIST;
 		Connection conn = null;
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
@@ -43,9 +45,9 @@ public class MemberDao {
 			pstmt.setString(1, mid);
 			rs = pstmt.executeQuery();
 			if(rs.next()) {
-				result = FAIL;
+				result = EXIST;
 			} else {
-				result = SUCCESS;
+				result = NONEXIST;
 			}
 		} catch (SQLException e) {
 			System.out.println(e.getMessage());
@@ -62,7 +64,7 @@ public class MemberDao {
 	}
 	// (2) mNICKNAME 중복체크
 	public int mnicknameConfirm(String mnickname) {
-		int result = FAIL;
+		int result = EXIST;
 		Connection conn = null;
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
@@ -73,9 +75,9 @@ public class MemberDao {
 			pstmt.setString(1, mnickname);
 			rs = pstmt.executeQuery();
 			if(rs.next()) {
-				result = FAIL;
+				result = EXIST;
 			} else {
-				result = SUCCESS;
+				result = NONEXIST;
 			}
 		} catch (SQLException e) {
 			System.out.println(e.getMessage());
@@ -92,7 +94,7 @@ public class MemberDao {
 	}
 	// (3) mEMAIL 중복체크
 	public int memailConfirm(String memail) {
-		int result = FAIL;
+		int result = EXIST;
 		Connection conn = null;
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
@@ -103,9 +105,9 @@ public class MemberDao {
 			pstmt.setString(1, memail);
 			rs = pstmt.executeQuery();
 			if(rs.next()) {
-				result = FAIL;
+				result = EXIST;
 			} else {
-				result = SUCCESS;
+				result = NONEXIST;
 			}
 		} catch (SQLException e) {
 			System.out.println(e.getMessage());

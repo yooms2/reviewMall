@@ -1,0 +1,29 @@
+@charset "UTF-8";
+* {
+	padding: 0;
+	margin: 0;
+}
+#header {
+	background-color: #808080;
+}
+#header .logo img {
+	width: 350px;
+	text-align: center;
+	margin: 0 auto;
+	cursor: pointer;
+}
+#header a {
+	text-decoration: none;
+	color: black;
+	font-size: 13pt;
+}
+#header .gnb ul {
+	overflow: hidden;
+}
+#header .gnb ul li {
+	float: right;
+	list-style: none;
+	margin-right: 30px;
+	padding-bottom: 10px;
+	font-weight: bold;
+}

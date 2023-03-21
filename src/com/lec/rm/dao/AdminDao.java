@@ -70,10 +70,10 @@ public class AdminDao {
 			pstmt.setString(1, aid);
 			rs = pstmt.executeQuery();
 			if(rs.next()) {
+				admin = new AdminDto();
 				admin.setAid(rs.getString("aid"));
 				admin.setApw(rs.getString("apw"));
 				admin.setAname(rs.getString("aname"));
-				admin = new AdminDto();
 			}
 		} catch (SQLException e) {
 			System.out.println(e.getMessage());

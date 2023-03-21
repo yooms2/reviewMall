@@ -1,0 +1,41 @@
+@charset "UTF-8";
+
+#content {
+	width: 700px;
+	margin: 50px auto;
+}
+#content table {
+	border: 1px solid lightgray;
+	width: 90%;
+	margin: 0 auto;
+}
+#content caption {
+	font-size: 1.8em;
+	font-weight: bold;
+	margin-bottom: 30px;
+}
+#content b {
+	color: red;
+}
+#content table tr th {
+	background-color: lightgray;
+	height: 40px;
+	text-align: center;
+	padding: 5px;
+}
+#content table tr td {
+	border: 1px solid lightgray;
+	text-align: left;
+	height: 40px;
+	padding: 5px;
+}
+#content .paging {
+	text-align: center;
+}
+#content input:not(.btn):not(.gender) {
+	outline: none;
+	width: 40%;
+}
+#content input:focus {
+	outline: none;
+}
