@@ -9,12 +9,15 @@ import javax.servlet.http.HttpSession;
 import com.lec.rm.dao.MemberDao;
 import com.lec.rm.dto.MemberDto;
 
-public class MJoinService implements Service {
+public class MModifyService implements Service {
 	@Override
 	public void execute(HttpServletRequest request, HttpServletResponse response) {
+		String dbMpw = request.getParameter("dbMpw");
 		String mid = request.getParameter("mid");
 		String mpw = request.getParameter("mpw");
-		String mpwChk = request.getParameter("mpwChk");
+		if(mpw.equals("")) {
+			mpw = dbMpw;
+		}
 		String mname = request.getParameter("mname");
 		String mnickname = request.getParameter("mnickname");
 		String mtel = request.getParameter("mtel");
@@ -27,19 +30,14 @@ public class MJoinService implements Service {
 		String mgender = request.getParameter("mgender");
 		String maddress = request.getParameter("maddress");
 		MemberDao mDao = MemberDao.getInstance();
-		int result = mDao.midConfirm(mid);
-		if(result == MemberDao.NONEXIST) {
-			MemberDto member = new MemberDto(mid, mpwChk, mname, mnickname, mtel, memail, mbirth, mgender, maddress, null);
-			result = mDao.joinMember(member);
-			if(result == MemberDao.SUCCESS) {
-				HttpSession session = request.getSession();
-				session.setAttribute("mid", mid);
-				request.setAttribute("joinResult", "회원가입 완료되었습니다");
-			} else {
-				request.setAttribute("joinError", "회원가입 실패하였습니다(정보가 너무 깁니다)");
-			}
+		MemberDto member = new MemberDto(mid, mpw, mname, mnickname, mtel, memail, mbirth, mgender, maddress, null);
+		int result = mDao.modifyMember(member);
+		if(result == MemberDao.SUCCESS) {
+			HttpSession session = request.getSession();
+			session.setAttribute("member", member);
+			request.setAttribute("modifyResult", "회원정보가 수정되었습니다");
 		} else {
-			request.setAttribute("joinError", "회원가입 실패하였습니다(중복된 아이디 입니다");
+			request.setAttribute("modifyError", "정보수정에 실패하였습니다");
 		}
 	}
 }

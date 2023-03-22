@@ -14,25 +14,6 @@
 	<script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
 	<script>
 		$(function() {
-			$('input[name="mid"]').keyup(function() {
-				var mid = $(this).val();
-				var patternMid = /^[a-zA-Z0-9]/;
-				if(mid.length < 4) {
-					$('#midConfirm').html('<b>아이디는 4글자 이상 입력해 주세요</b>');
-				} else if(!mid.match(patternMid)){
-					$('#midConfirm').html('<b>영문/숫자로만 입력해 주세요</b>');
-				} else {
-					$.ajax({
-						url : '${conPath }/midConfirm.do',
-						type : 'get',
-						data : 'mid='+mid,
-						dataType : 'html',
-						success : function(data) {
-							$('#midConfirm').html(data);
-						}
-					});
-				}
-			});
 			$('input[name="mpw"], input[name="mpwChk"]').keyup(function() {
 				var mpw = $('input[name="mpw"]').val();
 				var mpwChk = $('input[name="mpwChk"]').val();
@@ -46,7 +27,7 @@
 			});
 			$('input[name="mnickname"]').keyup(function() {
 				var mnickname = $(this).val();
-				if(!mnickname) {
+				if(!mnickname || (mnickname == '${member.mnickname }')) {
 					$('#mnicknameCofirm').html(' &nbsp ');
 				} else if(mnickname.length < 2) {
 					$('#mnicknameConfirm').text('닉네임은 2글자 이상 입력해 주세요');
@@ -65,7 +46,7 @@
 			$('input[name="memail"]').keyup(function() {
 				var patternMemail = /^[a-zA-Z0-9_\.]+@[a-zA-Z0-9_]+(\.\w+){1,2}$/;
 				var memail = $(this).val();
-				if(!memail) {
+				if(!memail || (memail == '${member.memail }')) {
 					$('#memailConfirm').html(' &nbsp ');
 				} else if(!memail.match(patternMemail)) {
 					$('#memailConfirm').html('<b>메일형식에 맞게 입력해 주세요</b>');
@@ -82,17 +63,24 @@
 				}
 			});
 			$('form').submit(function() {
-				var midConfirm = $('#midConfirm').text().trim();
+				var oldMpw = $('input[name="oldMpw"]').val();
 				var mpwConfirm = $('#mpwConfirm').text().trim();
 				var mnicknameConfirm = $('#mnicknameConfirm').text().trim();
 				var memailConfirm = $('#memailConfirm').text().trim();
-				if(midConfirm != '사용 가능한 ID 입니다') {
-					$('input[name="mid"]').focus();
+				if(oldMpw != '${member.mpw }') {
+					alert('현재 비밀번호를 확인하세요');
+					$('input[name="oldMpw"]').focus();
 					return false;
-				} else if(mpwConfirm != '비밀번호 일치') {
+				} else if(mpwConfirm == '비밀번호는 4글자 이상 입력해 주세요') {
 					$('input[name="mpw"]').focus();
 					return false;
-				} else if(mnicknameConfirm != '사용 가능한 닉네임 입니다') {
+				} else if(mpwConfirm == '비밀번호 불일치') {
+					$('input[name="mpw"]').focus();
+					return false;
+				} else if(mnicknameConfirm == '닉네임은 2글자 이상 입력해 주세요') {
+					$('input[name="mnickname"]').focus();
+					return false;
+				} else if(mnicknameConfirm == '사용중인 닉네임 입니다') {
 					$('input[name="mnickname"]').focus();
 					return false;
 				} else if(memailConfirm == '중복된 이메일 입니다') {
@@ -124,78 +112,91 @@
 	</script>
 </head>
 <body>
-	<c:if test="${not empty member }">
+	<c:if test="${empty member }">
 		<script>
-			alert('로그인 상태 입니다');
-			history.back();
+			location.href="${conPath }/loginView.do";
 		</script>
 	</c:if>
 	<jsp:include page="../main/header.jsp"/>
 	<div id="content">
-		<form action="${conPath }/join.do" method="post">
+		<form action="${conPath }/modify.do" method="post">
+			<input type="hidden" name="dbMpw" value="${member.mpw }">
 			<table>
-				<caption>회원가입</caption>
+				<caption>정보수정</caption>
 				<tr>
-					<th>아이디 <b>*</b></th>
-					<td>
-						<input type="text" name="mid" required="required" placeholder="영문+숫자 조합 4자 이상">
-						<span id="midConfirm"></span>
-					</td>
+					<th>아이디</th>
+					<td><input type="text" name="mid" value="${member.mid }" readonly="readonly"></td>
 				</tr>
 				<tr>
-					<th>비밀번호 <b>*</b></th>
-					<td><input type="password" name="mpw" maxlength="16" placeholder="비밀번호는 4자~16자 " required="required"></td>
+					<th>현재 비밀번호</th>
+					<td><input type="password" name="oldMpw"></td>
 				</tr>
 				<tr>
-					<th>비밀번호 확인 <b>*</b></th>
+					<th>새로운 비밀번호</th>
+					<td><input type="password" name="mpw" maxlength="16"></td>
+				</tr>
+				<tr>
+					<th>새로운 비밀번호 확인</th>
 					<td>
-						<input type="password" name="mpwChk" maxlength="16" placeholder="비밀번호는 4자~16자 " required="required">
+						<input type="password" name="mpwChk" maxlength="16">
 						<span id="mpwConfirm"></span>
 					</td>
 				</tr>
 				<tr>
-					<th>이름 <b>*</b></th>
-					<td><input type="text" name="mname" required="required"></td>
+					<th>이름</th>
+					<td><input type="text" name="mname" value="${member.mname }" required="required"></td>
 				</tr>
 				<tr>
-					<th>닉네임 <b>*</b></th>
+					<th>닉네임</th>
 					<td>
-						<input type="text" name="mnickname" placeholder="닉네임은 2자 이상 " required="required">
+						<input type="text" name="mnickname" value="${member.mnickname }" required="required">
 						<span id="mnicknameConfirm"></span>
 					</td>
 				</tr>
 				<tr>
 					<th>전화번호</th>
 					<td>
-						<input type="text" name="mtel">
+						<input type="text" name="mtel" value="${member.mtel }">
 					</td>
 				</tr>
 				<tr>
 					<th>이메일</th>
 					<td>
-						<input type="text" name="memail">
+						<input type="text" name="memail" value="${member.memail }">
 						<span id="memailConfirm"></span>
 					</td>
 				</tr>
 				<tr>
 					<th>생년월일</th>
-					<td><input type="text" name="mbirth" id="datepicker"></td>
+					<td><input type="text" name="mbirth" value="${member.mbirth }" id="datepicker"></td>
 				</tr>
 				<tr>
 					<th>성별</th>
 					<td>
+					<c:if test="${member.mgender eq 'm'}">
+						남자<input type="radio" name="mgender" value="m" class="gender" checked="checked">
+						여자<input type="radio" name="mgender" value="f" class="gender">
+					</c:if>
+					<c:if test="${member.mgender eq 'f'}">
+						남자<input type="radio" name="mgender" value="m" class="gender">
+						여자<input type="radio" name="mgender" value="f" class="gender" checked="checked">
+					</c:if>
+					<c:if test="${empty member.mgender }">
 						남자<input type="radio" name="mgender" value="m" class="gender">
 						여자<input type="radio" name="mgender" value="f" class="gender">
+					</c:if>
 					</td>
 				</tr>
 				<tr>
 					<th>주소</th>
-					<td><input type="text" name="maddress"></td>
+					<td><input type="text" name="maddress" value="${member.maddress }"></td>
 				</tr>
 				<tr>
 					<td colspan="2" style="text-align:center;">
-						<input type="submit" value="회원가입" class="btn">
+						<input type="submit" value="수정하기" class="btn">
 						<input type="reset" value="재입력" class="btn">
+						<input type="button" value="이전" class="btn" onclick="history.back()">
+						<input type="button" value="탈퇴하기" class="btn" onclick="location.href='${conPath }/withdraw.do'">
 					</td>
 				</tr>
 			</table>

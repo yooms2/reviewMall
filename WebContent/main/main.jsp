@@ -8,22 +8,39 @@
 <head>
 	<meta charset="UTF-8">
 	<title>Insert title here</title>
-	<style>
-		#content {
-			width: 800px;
-			height: 800px;
-			line-height: 800px;
-			margin: 0 auto;
-			text-align: center;
-			font-size: 2.5em;
-		}
-	</style>
+	<link href="${conPath }/css/style.css" rel="stylesheet">
 </head>
 <body>
-	<jsp:include page="../main/header.jsp"/>
-	<div id="content">
-		main
+	<c:if test="${not empty loginError }">
+		<script>
+			alert('${loginError }');
+		</script>
+	</c:if>
+	<c:if test="${not empty modifyResult }">
+		<script>
+			alert('${modifyResult }');
+		</script>
+	</c:if>
+	<div id="wrapper">
+		<div class="header">
+		<jsp:include page="../main/header.jsp"/>
+		</div>
+		<div class="content">
+			<table>
+				<tr>
+					<td><img src="${conPath }/img/join.gif" onclick="location.href='${conPath }/joinView.do'"></td>
+				</tr>
+				<tr>
+					<td><img src="${conPath }/img/shirt.gif"  onclick="location.href='${conPath }/joinView.do'"></td>
+				</tr>
+				<tr>
+					<td><img src="${conPath }/img/community.gif"  onclick="location.href='${conPath }/joinView.do'"></td>
+				</tr>
+			</table>
+		</div>
+		<div class="footer">
+		<jsp:include page="../main/footer.jsp"/>
+		</div>
 	</div>
-	<jsp:include page="../main/footer.jsp"/>
 </body>
 </html>

@@ -9,27 +9,44 @@
 	<meta charset="UTF-8">
 	<title>Insert title here</title>
 	<link href="${conPath }/css/login.css" rel="stylesheet">
+	<style>
+		footer {
+			height: 60px;
+			background: #333;
+			color: #fff;
+			position: relative;
+			padding-bottom: 30px; 
+		}
+	</style>
 </head>
 <body>
-	<c:if test="${not empty member }">
+	<c:if test="${not empty joinResult }">
 		<script>
-			alert('접근 제한 페이지 입니다');
-			history.back();
+			alert('${joinResult}');
+		</script>
+	</c:if>
+	<c:if test="${not empty joinError }">
+		<script>
+			alert('${joinError}');
+			back.history();
 		</script>
 	</c:if>
 	<div id="login-form">
-		<h1>관리자 로그인</h1>
-		<form action="${conPath }/adminLogin.do" method="post">
+		<h1>로그인</h1>
+		<form action="${conPath }/login.do" method="post">
 			<div class="int">
-				<input type="text" name="aid" placeholder="아이디" required="required">
+				<input type="text" name="mid" value="${mid }" placeholder="아이디" required="required">
 			</div>
 			<div class="int">
-				<input type="password" name="apw" placeholder="비밀번호" required="required">
+				<input type="password" name="mpw" placeholder="비밀번호" required="required">
 			</div>
 			<div class="login">
 				<input type="submit" value="로그인">
 			</div>
 		</form>
+		<div class="caption">
+			<a href="">회원가입</a>
+		</div>
 	</div>
 </body>
 </html>

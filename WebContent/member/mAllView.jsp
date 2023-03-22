@@ -11,7 +11,7 @@
 	<link href="${conPath }/css/style.css" rel="stylesheet">
 	<style>
 		#content {
-			height: 300px;
+			height: 600px;
 		}
 	</style>
 </head>
@@ -31,15 +31,20 @@
 	<div id="content">
 		<table>
 			<caption>회원리스트</caption>
-			<tr>
-				<c:forEach var="dto" items="${members }">
-					<td>${dto.mid }</td>
-					<td>${dto.mname }</td>
-					<td>${dto.mnickname }</td>
-				</c:forEach>
-			</tr>
+			<c:forEach var="dto" items="${members }">
+				<tr>
+					<td style="text-align:center;">
+						아이디 : ${dto.mid } &nbsp;
+						이름 : ${dto.mname } &nbsp;
+						닉네임 : ${dto.mnickname }
+					</td>
+				</tr>
+			</c:forEach>
 		</table>
 		<div class="paging">
+			<c:if test="${BLOCKSIZE < startPage }">
+				<a href="${conPath }/allView.do?pageNum=${startPage-1 }">[이전]</a>
+			</c:if>
 			<c:forEach var="i" begin="${startPage }" end="${endPage }">
 				<c:if test="${i eq pageNum }">
 					[ <b> ${i } </b> ]
@@ -48,6 +53,9 @@
 					[ <a href="${conPath }/allView.do?pageNum=${i }"> ${i } </a> ]
 				</c:if>
 			</c:forEach>
+			<c:if test="${endPage < pageCnt }">
+				<a href="${conPath }/allView.do?pageNum=${endPage+1 }">[다음]</a>
+			</c:if>
 		</div>
 	</div>
 	<jsp:include page="../main/footer.jsp"/>

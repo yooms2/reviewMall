@@ -28,8 +28,8 @@
 			<div class="gnb">
 				<ul>
 					<li><a href="#">게시판</a></li>
-					<li><a href="#">로그아웃</a></li>
-					<li><a href="#">정보수정</a></li>
+					<li><a href="${conPath }/logout.do">로그아웃</a></li>
+					<li><a href="${conPath }/modifyView.do">정보수정</a></li>
 					<li><a>${member.mname } 님</a></li>
 				</ul>
 			</div>
@@ -41,7 +41,7 @@
 			<div class="gnb">
 				<ul>
 					<li><a href="#">게시판</a></li>
-					<li><a href="#">로그아웃</a></li>
+					<li><a href="${conPath }/logout.do">로그아웃</a></li>
 					<li><a>${admin.aname } 님</a></li>
 				</ul>
 			</div>

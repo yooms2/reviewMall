@@ -12,6 +12,9 @@ import javax.servlet.http.HttpServletResponse;
 import com.lec.rm.service.ALoginService;
 import com.lec.rm.service.MAllViewService;
 import com.lec.rm.service.MJoinService;
+import com.lec.rm.service.MLoginService;
+import com.lec.rm.service.MLogoutService;
+import com.lec.rm.service.MModifyService;
 import com.lec.rm.service.MemailConfirmService;
 import com.lec.rm.service.MidConfirmService;
 import com.lec.rm.service.MnickcnameConfirmService;
@@ -20,6 +23,7 @@ import com.lec.rm.service.Service;
 @WebServlet("*.do")
 public class FrontController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
+	private int modifyView = 0;
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		actionDo(request, response);
 	}
@@ -63,6 +67,26 @@ public class FrontController extends HttpServlet {
 			service = new MAllViewService();
 			service.execute(request, response);
 			viewPage = "member/mAllView.jsp";
+		} else if(command.equals("/loginView.do")) {
+			viewPage = "member/login.jsp";
+		} else if(command.equals("/login.do")) {
+			service = new MLoginService();
+			service.execute(request, response);
+			viewPage = "main/main.jsp";
+		} else if(command.equals("/logout.do")) {
+			service = new MLogoutService();
+			service.execute(request, response);
+			viewPage = "main/main.jsp";
+		} else if(command.equals("/modifyView.do")) {
+			viewPage= "member/modify.jsp";
+			modifyView = 1;
+		} else if(command.equals("/modify.do")) {
+			if(modifyView == 1) {
+				service = new MModifyService();
+				service.execute(request, response);
+				modifyView = 0;
+			}
+			viewPage = "main/main.jsp";
 		}
 		RequestDispatcher dispatcher = request.getRequestDispatcher(viewPage);
 		dispatcher.forward(request, response);
