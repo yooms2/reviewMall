@@ -26,6 +26,10 @@ public class BoardDao {
 			System.out.println(e.getMessage());
 		}
 	}
+	private static BoardDao instance = new BoardDao();
+	public static BoardDao getInstance() {
+		return instance;
+	}
 	// (1) 글목록(startRow ~ endRow)
 	public ArrayList<BoardDto> boardList(int startRow, int endRow) {
 		ArrayList<BoardDto> boards = new ArrayList<BoardDto>();

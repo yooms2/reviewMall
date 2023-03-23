@@ -16,6 +16,11 @@
 			alert('${loginError }');
 		</script>
 	</c:if>
+	<c:if test="${not empty logoutResult }">
+		<script>
+			alert('${logoutResult }');
+		</script>
+	</c:if>
 	<c:if test="${not empty modifyResult }">
 		<script>
 			alert('${modifyResult }');
@@ -34,7 +39,7 @@
 					<td><img src="${conPath }/img/shirt.gif"  onclick="location.href='${conPath }/joinView.do'"></td>
 				</tr>
 				<tr>
-					<td><img src="${conPath }/img/community.gif"  onclick="location.href='${conPath }/joinView.do'"></td>
+					<td><img src="${conPath }/img/community.gif"  onclick="location.href='${conPath }/boardList.do'"></td>
 				</tr>
 			</table>
 		</div>

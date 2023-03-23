@@ -10,6 +10,12 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.lec.rm.service.ALoginService;
+import com.lec.rm.service.BoardContentService;
+import com.lec.rm.service.BoardDeleteService;
+import com.lec.rm.service.BoardListService;
+import com.lec.rm.service.BoardModifyService;
+import com.lec.rm.service.BoardModifyViewService;
+import com.lec.rm.service.BoardWriteService;
 import com.lec.rm.service.MAllViewService;
 import com.lec.rm.service.MJoinService;
 import com.lec.rm.service.MLoginService;
@@ -37,6 +43,7 @@ public class FrontController extends HttpServlet {
 		String command = uri.substring(conPath.length());
 		String viewPage = null;
 		Service service = null;
+		// 비회원
 		if(command.equals("/main.do")) {
 			viewPage = "main/main.jsp";
 		} else if(command.equals("/joinView.do")) {
@@ -57,6 +64,7 @@ public class FrontController extends HttpServlet {
 			service = new MJoinService();
 			service.execute(request, response);
 			viewPage = "loginView.do";
+		// 관리자
 		} else if(command.equals("/adminLoginView.do")) {
 			viewPage = "admin/adminLogin.jsp";
 		} else if(command.equals("/adminLogin.do")) {
@@ -67,6 +75,7 @@ public class FrontController extends HttpServlet {
 			service = new MAllViewService();
 			service.execute(request, response);
 			viewPage = "member/mAllView.jsp";
+		// 회원
 		} else if(command.equals("/loginView.do")) {
 			viewPage = "member/login.jsp";
 		} else if(command.equals("/login.do")) {
@@ -87,6 +96,33 @@ public class FrontController extends HttpServlet {
 				modifyView = 0;
 			}
 			viewPage = "main/main.jsp";
+		// 게시판
+		} else if(command.equals("/boardWriteView.do")) {
+			viewPage = "board/boardWrite.jsp";
+		} else if(command.equals("/boardWrite.do")) {
+			service = new BoardWriteService();
+			service.execute(request, response);
+			viewPage = "boardList.do";
+		} else if(command.equals("/boardList.do")) {
+			service = new BoardListService();
+			service.execute(request, response);
+			viewPage = "board/boardList.jsp";
+		} else if(command.equals("/boardContent.do")) {
+			service = new BoardContentService();
+			service.execute(request, response);
+			viewPage = "board/boardContent.jsp";
+		} else if(command.equals("/boardModifyView.do")) {
+			service = new BoardModifyViewService();
+			service.execute(request, response);
+			viewPage = "board/boardModify.jsp";
+		} else if(command.equals("/boardModify.do")) {
+			service = new BoardModifyService();
+			service.execute(request, response);
+			viewPage = "boardList.do";
+		} else if(command.equals("/boardDelete.do")) {
+			service = new BoardDeleteService();
+			service.execute(request, response);
+			viewPage = "boardList.do";
 		}
 		RequestDispatcher dispatcher = request.getRequestDispatcher(viewPage);
 		dispatcher.forward(request, response);

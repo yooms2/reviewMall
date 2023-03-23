@@ -9,5 +9,6 @@ public class MLogoutService implements Service {
 	public void execute(HttpServletRequest request, HttpServletResponse response) {
 		HttpSession session = request.getSession();
 		session.invalidate();
+		request.setAttribute("logoutResult", "로그아웃 되었습니다");
 	}
 }

@@ -15,7 +15,7 @@
 		<c:if test="${empty member and empty admin }">
 			<div class="gnb">
 				<ul>
-					<li><a href="#">게시판</a></li>
+					<li><a href="${conPath }/boardList.do">게시판</a></li>
 					<li><a href="${conPath }/loginView.do">로그인</a></li>
 					<li><a href="${conPath }/joinView.do">회원가입</a></li>
 				</ul>
@@ -27,7 +27,7 @@
 		<c:if test="${not empty member and empty admin }">
 			<div class="gnb">
 				<ul>
-					<li><a href="#">게시판</a></li>
+					<li><a href="${conPath }/boardList.do">게시판</a></li>
 					<li><a href="${conPath }/logout.do">로그아웃</a></li>
 					<li><a href="${conPath }/modifyView.do">정보수정</a></li>
 					<li><a>${member.mname } 님</a></li>
@@ -40,7 +40,7 @@
 		<c:if test="${empty member and not empty admin }">
 			<div class="gnb">
 				<ul>
-					<li><a href="#">게시판</a></li>
+					<li><a href="${conPath }/boardList.do">게시판</a></li>
 					<li><a href="${conPath }/logout.do">로그아웃</a></li>
 					<li><a>${admin.aname } 님</a></li>
 				</ul>

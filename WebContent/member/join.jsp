@@ -130,77 +130,83 @@
 			history.back();
 		</script>
 	</c:if>
-	<jsp:include page="../main/header.jsp"/>
-	<div id="content">
-		<form action="${conPath }/join.do" method="post">
-			<table>
-				<caption>회원가입</caption>
-				<tr>
-					<th>아이디 <b>*</b></th>
-					<td>
-						<input type="text" name="mid" required="required" placeholder="영문+숫자 조합 4자 이상">
-						<span id="midConfirm"></span>
-					</td>
-				</tr>
-				<tr>
-					<th>비밀번호 <b>*</b></th>
-					<td><input type="password" name="mpw" maxlength="16" placeholder="비밀번호는 4자~16자 " required="required"></td>
-				</tr>
-				<tr>
-					<th>비밀번호 확인 <b>*</b></th>
-					<td>
-						<input type="password" name="mpwChk" maxlength="16" placeholder="비밀번호는 4자~16자 " required="required">
-						<span id="mpwConfirm"></span>
-					</td>
-				</tr>
-				<tr>
-					<th>이름 <b>*</b></th>
-					<td><input type="text" name="mname" required="required"></td>
-				</tr>
-				<tr>
-					<th>닉네임 <b>*</b></th>
-					<td>
-						<input type="text" name="mnickname" placeholder="닉네임은 2자 이상 " required="required">
-						<span id="mnicknameConfirm"></span>
-					</td>
-				</tr>
-				<tr>
-					<th>전화번호</th>
-					<td>
-						<input type="text" name="mtel">
-					</td>
-				</tr>
-				<tr>
-					<th>이메일</th>
-					<td>
-						<input type="text" name="memail">
-						<span id="memailConfirm"></span>
-					</td>
-				</tr>
-				<tr>
-					<th>생년월일</th>
-					<td><input type="text" name="mbirth" id="datepicker"></td>
-				</tr>
-				<tr>
-					<th>성별</th>
-					<td>
-						남자<input type="radio" name="mgender" value="m" class="gender">
-						여자<input type="radio" name="mgender" value="f" class="gender">
-					</td>
-				</tr>
-				<tr>
-					<th>주소</th>
-					<td><input type="text" name="maddress"></td>
-				</tr>
-				<tr>
-					<td colspan="2" style="text-align:center;">
-						<input type="submit" value="회원가입" class="btn">
-						<input type="reset" value="재입력" class="btn">
-					</td>
-				</tr>
-			</table>
-		</form>
+	<div id="wrapper">
+		<div class="header">
+		<jsp:include page="../main/header.jsp"/>
+		</div>
+		<div id="content">
+			<form action="${conPath }/join.do" method="post">
+				<table>
+					<caption>회원가입</caption>
+					<tr>
+						<th>아이디 <b>*</b></th>
+						<td>
+							<input type="text" name="mid" required="required" placeholder="영문+숫자 조합 4자 이상">
+							<span id="midConfirm"></span>
+						</td>
+					</tr>
+					<tr>
+						<th>비밀번호 <b>*</b></th>
+						<td><input type="password" name="mpw" maxlength="16" placeholder="비밀번호는 4자~16자 " required="required"></td>
+					</tr>
+					<tr>
+						<th>비밀번호 확인 <b>*</b></th>
+						<td>
+							<input type="password" name="mpwChk" maxlength="16" placeholder="비밀번호는 4자~16자 " required="required">
+							<span id="mpwConfirm"></span>
+						</td>
+					</tr>
+					<tr>
+						<th>이름 <b>*</b></th>
+						<td><input type="text" name="mname" required="required"></td>
+					</tr>
+					<tr>
+						<th>닉네임 <b>*</b></th>
+						<td>
+							<input type="text" name="mnickname" placeholder="닉네임은 2자 이상 " required="required">
+							<span id="mnicknameConfirm"></span>
+						</td>
+					</tr>
+					<tr>
+						<th>전화번호</th>
+						<td>
+							<input type="text" name="mtel">
+						</td>
+					</tr>
+					<tr>
+						<th>이메일</th>
+						<td>
+							<input type="text" name="memail">
+							<span id="memailConfirm"></span>
+						</td>
+					</tr>
+					<tr>
+						<th>생년월일</th>
+						<td><input type="text" name="mbirth" id="datepicker"></td>
+					</tr>
+					<tr>
+						<th>성별</th>
+						<td>
+							남자<input type="radio" name="mgender" value="m" class="gender">
+							여자<input type="radio" name="mgender" value="f" class="gender">
+						</td>
+					</tr>
+					<tr>
+						<th>주소</th>
+						<td><input type="text" name="maddress"></td>
+					</tr>
+					<tr>
+						<td colspan="2" style="text-align:center;">
+							<input type="submit" value="회원가입" class="btn">
+							<input type="reset" value="재입력" class="btn">
+						</td>
+					</tr>
+				</table>
+			</form>
+		</div>
+		<div class="footer">
+		<jsp:include page="../main/footer.jsp"/>
+		</div>
 	</div>
-	<jsp:include page="../main/footer.jsp"/>
 </body>
 </html>
