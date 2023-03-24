@@ -15,21 +15,27 @@ import com.lec.rm.service.BoardDeleteService;
 import com.lec.rm.service.BoardListService;
 import com.lec.rm.service.BoardModifyService;
 import com.lec.rm.service.BoardModifyViewService;
+import com.lec.rm.service.BoardReplyService;
+import com.lec.rm.service.BoardReplyViewService;
 import com.lec.rm.service.BoardWriteService;
 import com.lec.rm.service.MAllViewService;
 import com.lec.rm.service.MJoinService;
 import com.lec.rm.service.MLoginService;
 import com.lec.rm.service.MLogoutService;
 import com.lec.rm.service.MModifyService;
+import com.lec.rm.service.MWithdrawService;
 import com.lec.rm.service.MemailConfirmService;
 import com.lec.rm.service.MidConfirmService;
 import com.lec.rm.service.MnickcnameConfirmService;
+import com.lec.rm.service.ProductAddService;
 import com.lec.rm.service.Service;
+import com.lec.rm.service.productListService;
 
 @WebServlet("*.do")
 public class FrontController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	private int modifyView = 0;
+	private int addView = 0;
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		actionDo(request, response);
 	}
@@ -43,6 +49,7 @@ public class FrontController extends HttpServlet {
 		String command = uri.substring(conPath.length());
 		String viewPage = null;
 		Service service = null;
+		
 		// 비회원
 		if(command.equals("/main.do")) {
 			viewPage = "main/main.jsp";
@@ -64,6 +71,7 @@ public class FrontController extends HttpServlet {
 			service = new MJoinService();
 			service.execute(request, response);
 			viewPage = "loginView.do";
+			
 		// 관리자
 		} else if(command.equals("/adminLoginView.do")) {
 			viewPage = "admin/adminLogin.jsp";
@@ -75,6 +83,7 @@ public class FrontController extends HttpServlet {
 			service = new MAllViewService();
 			service.execute(request, response);
 			viewPage = "member/mAllView.jsp";
+			
 		// 회원
 		} else if(command.equals("/loginView.do")) {
 			viewPage = "member/login.jsp";
@@ -96,6 +105,11 @@ public class FrontController extends HttpServlet {
 				modifyView = 0;
 			}
 			viewPage = "main/main.jsp";
+		} else if(command.equals("/withdraw.do")){
+			service = new MWithdrawService();
+			service.execute(request, response);
+			viewPage = "main/main.jsp";
+			
 		// 게시판
 		} else if(command.equals("/boardWriteView.do")) {
 			viewPage = "board/boardWrite.jsp";
@@ -123,6 +137,30 @@ public class FrontController extends HttpServlet {
 			service = new BoardDeleteService();
 			service.execute(request, response);
 			viewPage = "boardList.do";
+		} else if(command.equals("/boardReplyView.do")) {
+			service = new BoardReplyViewService();
+			service.execute(request, response);
+			viewPage = "board/boardReply.jsp";
+		} else if(command.equals("/boardReply.do")) {
+			service = new BoardReplyService();
+			service.execute(request, response);
+			viewPage = "boardList.do";
+			
+		// 상품
+		} else if(command.equals("/productAddView.do")) {
+			viewPage = "product/productAdd.jsp";
+			addView = 1;
+		} else if(command.equals("/productAdd.do")) {
+			if(addView == 1) {
+				service = new ProductAddService();
+				service.execute(request, response);
+				addView = 0;
+			}
+			viewPage = "productList.do";
+		} else if(command.equals("/productList.do")) {
+			service = new productListService();
+			service.execute(request, response);
+			viewPage = "product/productList.jsp";
 		}
 		RequestDispatcher dispatcher = request.getRequestDispatcher(viewPage);
 		dispatcher.forward(request, response);

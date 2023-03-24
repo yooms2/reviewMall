@@ -26,6 +26,11 @@
 			alert('${modifyResult }');
 		</script>
 	</c:if>
+	<c:if test="${not empty withdrawResult }">
+		<script>
+			alert('${withdrawResult }');
+		</script>
+	</c:if>
 	<div id="wrapper">
 		<div class="header">
 		<jsp:include page="../main/header.jsp"/>
@@ -36,7 +41,7 @@
 					<td><img src="${conPath }/img/join.gif" onclick="location.href='${conPath }/joinView.do'"></td>
 				</tr>
 				<tr>
-					<td><img src="${conPath }/img/shirt.gif"  onclick="location.href='${conPath }/joinView.do'"></td>
+					<td><img src="${conPath }/img/shirt.gif"  onclick="location.href='${conPath }/productList.do'"></td>
 				</tr>
 				<tr>
 					<td><img src="${conPath }/img/community.gif"  onclick="location.href='${conPath }/boardList.do'"></td>

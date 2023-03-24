@@ -36,7 +36,7 @@
 			</div>
 		</form>
 		<div class="caption">
-			<a href="">회원가입</a>
+			<a href="${conPath }/joinView.do">회원가입</a>
 		</div>
 	</div>
 </body>

@@ -189,6 +189,7 @@ public class BoardDao {
 		}
 		return board;
 	}
+	// (5)
 	public BoardDto board_modifyReplyView(int bid) {
 		BoardDto board = null;
 		Connection conn = null;
@@ -321,8 +322,8 @@ public class BoardDao {
 			pstmt.setString(3, board.getBcontent());
 			pstmt.setString(4, board.getBfilename());
 			pstmt.setInt(5, board.getBgroup());
-			pstmt.setInt(6, board.getBstep());
-			pstmt.setInt(7, board.getBindent());
+			pstmt.setInt(6, board.getBstep()+1);
+			pstmt.setInt(7, board.getBindent()+1);
 			result = pstmt.executeUpdate();
 		} catch (SQLException e) {
 			System.out.println(e.getMessage());

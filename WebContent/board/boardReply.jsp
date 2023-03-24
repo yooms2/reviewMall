@@ -8,35 +8,38 @@
 <head>
 	<meta charset="UTF-8">
 	<title>Insert title here</title>
-	<link href="${conPath }/css/style.css" rel="stylesheet">
-	<style>
-		#content {
-			height: 800px;
-		}
-	</style>
+	<link href="${conPath }/css/style2.css" rel="stylesheet">
 </head>
 <body>
-	<c:if test="${empty member and empty admin }">
+	<c:if test="${empty member}">
 		<script>
-			alert('게시판 글쓰기는 로그인 후에 가능합니다');
-			history.back();
+			alert('로그인 후 작성이 가능합니다');
+			location.href="${conPath }/loginView.do";
 		</script>
 	</c:if>
 	<div id="wrapper">
 		<div class="header">
 		<jsp:include page="../main/header.jsp"/>
 		</div>
-		<div id="content">
-			<form action="${conPath }/boardWrite.do" method="post" enctype="multipart/form-data">
+		<div class="content">
+			<form action="${conPath }/boardReply.do" method="post" enctype="multipart/form-data">
+				<input type="hidden" name="bgroup" value="${oriBoard.bgroup }">
+				<input type="hidden" name="bstep" value="${oriBoard.bstep }">
+				<input type="hidden" name="bindent" value="${oriBoard.bindent }">
+				<input type="hidden" name="pageNum" value="${param.pageNum }">
 				<table>
-					<caption>글쓰기</caption>
+					<caption>${oriBoard.bid }번 답변글 작성</caption>
+					<tr>
+						<th>작성자</th>
+						<td>${member.mnickname }</td>
+					</tr>
 					<tr>
 						<th>제목</th>
-						<td><input type="text" name="btitle" required="required" size="25"></td>
+						<td><input type="text" name="btitle" required="required" size="58"></td>
 					</tr>
 					<tr>
 						<th>내용</th>
-						<td><textarea name="bcontent" rows="20" cols="60" required="required"></textarea></td>
+						<td><textarea name="bcontent" rows="20" cols="60" required="required"></textarea>
 					</tr>
 					<tr>
 						<th>첨부파일</th>
@@ -46,7 +49,7 @@
 						<td colspan="2">
 							<input type="submit" value="글쓰기" class="btn">
 							<input type="reset" value="다시쓰기" class="btn">
-							<input type="button" value="글목록" class="btn" onclick="location.href='${conPath }/boardList.do'">
+							<input type="button" value="글목록" class="btn" onclick="location.href='${conPath }/boardList.do?pageNum=${param.pageNum }'">
 						</td>
 					</tr>
 				</table>

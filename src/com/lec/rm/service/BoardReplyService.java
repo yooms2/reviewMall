@@ -11,47 +11,56 @@ import java.util.Enumeration;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import com.lec.rm.dao.BoardDao;
 import com.lec.rm.dto.BoardDto;
+import com.lec.rm.dto.MemberDto;
 import com.oreilly.servlet.MultipartRequest;
 import com.oreilly.servlet.multipart.DefaultFileRenamePolicy;
 
-public class BoardModifyService implements Service {
+public class BoardReplyService implements Service {
 	@Override
 	public void execute(HttpServletRequest request, HttpServletResponse response) {
 		String path = request.getRealPath("fileUp");
 		int maxSize = 1024*1024*2;
-		String bfilename = "", dbBfilename = null;
+		String bfilename = "";
 		try {
 			MultipartRequest mRequest = new MultipartRequest(request, path, maxSize, "utf-8", new DefaultFileRenamePolicy());
 			Enumeration<String> params = mRequest.getFileNames();
 			String param = params.nextElement();
 			bfilename = mRequest.getFilesystemName(param);
-			dbBfilename = mRequest.getParameter("dbBfilename");
-			if(bfilename == null) {
-				bfilename = dbBfilename;
+			HttpSession session = request.getSession();
+			MemberDto member = (MemberDto) session.getAttribute("member");
+			if(member == null) {
+				request.setAttribute("boardResult", "로그인 후 작성이 가능합니다");
+				return;
 			}
-			int bid = Integer.parseInt(mRequest.getParameter("bid"));
+			String mid = member.getMid();
+			String mname = member.getMname();
+			String mnickname = member.getMnickname();
 			String btitle = mRequest.getParameter("btitle");
 			String bcontent = mRequest.getParameter("bcontent");
+			int bgroup = Integer.parseInt(mRequest.getParameter("bgroup"));
+			int bstep = Integer.parseInt(mRequest.getParameter("bstep"));
+			int bindent = Integer.parseInt(mRequest.getParameter("bindent"));
 			BoardDao bDao = BoardDao.getInstance();
-			BoardDto bDto = new BoardDto(bid, null, null, null, btitle, bcontent, bfilename, 0, 0, 0, 0, null);
-			int result = bDao.boardModify(bDto);
+			BoardDto bDto = new BoardDto(0, mid, mname, mnickname, btitle, bcontent, bfilename, 0, bgroup, bstep, bindent, null);
+			int result = bDao.boardReply(bDto);
 			if(result == BoardDao.SUCCESS) {
-				request.setAttribute("boardResult", "글을 수정하였습니다");
+				request.setAttribute("boardResult", "답변글 작성하였습니다");
 			} else {
-				request.setAttribute("boardResult", "글을 수정하는데 실패하였습니다");
+				request.setAttribute("boardResult", "답변글 작성에 실패하였습니다");
 			}
 			request.setAttribute("pageNum", mRequest.getParameter("pageNum"));
 		} catch (IOException e) {
 			System.out.println(e.getMessage());
 		}
-		if(dbBfilename!=null && !bfilename.equals(dbBfilename)) {
+		if(bfilename != null) {
 			InputStream is = null;
 			OutputStream os = null;
+			File serverFile = new File(path + "/" + bfilename);
 			try {
-				File serverFile = new File(path + "/" + bfilename);
 				is = new FileInputStream(serverFile);
 				os = new FileOutputStream("C:/Project/reviewmall/WebContent/fileUp/" + bfilename);
 				byte[] bs = new byte[(int)serverFile.length()];

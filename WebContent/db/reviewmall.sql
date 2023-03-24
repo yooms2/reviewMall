@@ -75,14 +75,14 @@ DELETE FROM BOARD WHERE mID = 'aaaa';
 -- (1) 상품목록 리스트
 SELECT *
     FROM (SELECT ROWNUM RN, A.* FROM (SELECT * FROM PRODUCT ORDER BY pID DESC) A)
-    WHERE RN BETWEEN 2 AND 3;
+    WHERE RN BETWEEN 1 AND 300;
 -- (2) 상품 개수
 SELECT COUNT(*) CNT FROM PRODUCT;
 -- (3) 상품검색
 SELECT * FROM PRODUCT
     WHERE pNAME LIKE '%'||TRIM(UPPER(' 상 '))||'%';
 -- (4) 상품등록
-INSERT INTO PRODUCT VALUES (PRONUM_SEQ.NEXTVAL, '오렌지 맨투맨', 40000, 'M사이즈', '남성용', '5-1.png', '5-2.png', NULL);
+INSERT INTO PRODUCT VALUES (PRONUM_SEQ.NEXTVAL, '오렌지 맨투맨', 40000, 'M사이즈', '남성용', '5-1.png', NULL, NULL);
 -- (5) 상품수정
 UPDATE PRODUCT
     SET pNAME = '검정 니트',

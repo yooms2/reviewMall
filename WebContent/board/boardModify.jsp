@@ -19,6 +19,7 @@
 			<form action="${conPath }/boardModify.do" method="post" enctype="multipart/form-data">
 				<input type="hidden" name="bid" value="${board.bid }">
 				<input type="hidden" name="dbBfilename" value="${board.bfilename }">
+				<input type="hidden" name="pageNum" value="${param.pageNum }">
 				<table>
 					<caption>${board.bid }번 글 수정</caption>
 					<tr>

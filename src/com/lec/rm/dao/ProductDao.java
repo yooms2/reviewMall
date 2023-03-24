@@ -95,7 +95,7 @@ public class ProductDao {
 		return count;
 	}
 	// (3) 상품검색
-	public ArrayList<ProductDto> getProducts(String schName) {
+	public ArrayList<ProductDto> getProducts(String pname) {
 		ArrayList<ProductDto> products = new ArrayList<ProductDto>();
 		Connection conn = null;
 		PreparedStatement pstmt = null;
@@ -105,11 +105,10 @@ public class ProductDao {
 		try {
 			conn = ds.getConnection();
 			pstmt = conn.prepareStatement(sql);
-			pstmt.setString(1, schName);
+			pstmt.setString(1, pname);
 			rs = pstmt.executeQuery();
 			while(rs.next()) {
 				int pid = rs.getInt("pid");
-				String pname = rs.getString("pname");
 				int pprice = rs.getInt("pprice");
 				String psize = rs.getString("psize");
 				String pcategory = rs.getString("pcategory");
@@ -136,7 +135,7 @@ public class ProductDao {
 		int result = FAIL;
 		Connection conn = null;
 		PreparedStatement pstmt = null;
-		String sql = "INSERT INTO PRODUCT VALUES (PRONUM_SEQ.NEXTVAL, ?, ?, ?, ?, ?, ?, NULL)";
+		String sql = "INSERT INTO PRODUCT VALUES (PRONUM_SEQ.NEXTVAL, ?, ?, ?, ?, ?, NULL, NULL)";
 		try {
 			conn = ds.getConnection();
 			pstmt = conn.prepareStatement(sql);
@@ -145,7 +144,6 @@ public class ProductDao {
 			pstmt.setString(3, product.getPsize());
 			pstmt.setString(4, product.getPcategory());
 			pstmt.setString(5, product.getPaimage());
-			pstmt.setString(6, product.getPbimage());
 			result = pstmt.executeUpdate();
 		} catch (SQLException e) {
 			System.out.println(e.getMessage());

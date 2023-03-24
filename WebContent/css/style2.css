@@ -1,0 +1,47 @@
+@charset "UTF-8";
+html, body {
+	margin: 0; padding: 0; height: 100%;
+}
+#wrapper {
+	min-height: 100%; position: relative;
+}
+#wrapper a {
+	text-decoration: none;
+	color: black;
+}
+#wrapper b {
+	color: red;
+}
+.content {
+	width: 1360px; height: 1000px; margin: 0 auto;
+	text-align: center; font-size: 2.5em;
+	padding-bottom: 150px; padding-top: 20px;
+	box-sizing: border-box;
+	min-height: 100%;
+}
+.content table {
+	width: 70%; height: 70%; box-sizing: border-box;
+	margin: 0 auto;
+}
+.content tr th, .content tr td {
+	font-size: .4em;
+	width: 40px; height: 40px;
+	border: 1px solid lightgray;
+}
+.content tr td img {
+	width: 80%;
+	height: 270px;
+	border-bottom: 1px solid white;
+	cursor: pointer;
+}
+.content input {
+	width: 423.75px;
+	height: 25px;
+}
+.content input.btn {
+	width: 150px;
+	height: 30px;
+}
+.footer {
+	width: 100%; position: absolute; bottom: 0; left: 0;
+}

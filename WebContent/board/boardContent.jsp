@@ -45,12 +45,12 @@
 				<tr>
 					<td colspan="2">
 						<c:if test="${member.mid eq board.mid or not empty admin}">
-							<button onclick="location.href='${conPath }/boardModifyView.do?bid=${board.bid }&pageNum=${pageNum }'">수정하기</button>
+							<button onclick="location.href='${conPath }/boardModifyView.do?bid=${board.bid }&pageNum=${param.pageNum }'">수정하기</button>
 						</c:if>
 						<c:if test="${member.mid eq board.mid or not empty admin }">
 							<button onclick="location.href='${conPath }/boardDelete.do?bid=${board.bid }&pageNum=${param.pageNum }'">삭제하기</button>
 						</c:if>
-						<c:if test="${not empty member }">
+						<c:if test="${not empty member or not empty admin }">
 							<button onclick="location.href='${conPath}/boardReplyView.do?bid=${board.bid }&pageNum=${param.pageNum }'">답변하기</button>
 						</c:if>
 						<button onclick="location.href='${conPath}/boardList.do?pageNum=${param.pageNum }'">글목록</button>
