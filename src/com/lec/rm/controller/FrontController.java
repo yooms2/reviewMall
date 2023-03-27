@@ -28,14 +28,21 @@ import com.lec.rm.service.MemailConfirmService;
 import com.lec.rm.service.MidConfirmService;
 import com.lec.rm.service.MnickcnameConfirmService;
 import com.lec.rm.service.ProductAddService;
+import com.lec.rm.service.ProductContentService;
+import com.lec.rm.service.ProductDeleteService;
 import com.lec.rm.service.Service;
-import com.lec.rm.service.productListService;
+import com.lec.rm.service.WishListAddService;
+import com.lec.rm.service.WisthListService;
+import com.lec.rm.service.ProductListService;
+import com.lec.rm.service.ProductModifyService;
+import com.lec.rm.service.ProductModifyViewService;
 
 @WebServlet("*.do")
 public class FrontController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	private int modifyView = 0;
 	private int addView = 0;
+	private int proModi = 0;
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		actionDo(request, response);
 	}
@@ -158,9 +165,39 @@ public class FrontController extends HttpServlet {
 			}
 			viewPage = "productList.do";
 		} else if(command.equals("/productList.do")) {
-			service = new productListService();
+			service = new ProductListService();
 			service.execute(request, response);
 			viewPage = "product/productList.jsp";
+		} else if(command.equals("/productContent.do")) {
+			service = new ProductContentService();
+			service.execute(request, response);
+			viewPage = "product/productContent.jsp";
+		} else if(command.equals("/productModifyView.do")) {
+			service = new ProductModifyViewService();
+			service.execute(request, response);
+			viewPage = "product/productModify.jsp";
+			proModi = 1;
+		} else if(command.equals("/productModify.do")) {
+			if(proModi == 1) {
+				service = new ProductModifyService();
+				service.execute(request, response);
+				proModi = 0;
+			}
+			viewPage = "productList.do";
+		} else if(command.equals("/productDelete.do")) {
+			service = new ProductDeleteService();
+			service.execute(request, response);
+			viewPage = "productList.do";
+			
+		// 관심목록
+		} else if(command.equals("/wishListAdd.do")) {
+			service = new WishListAddService();
+			service.execute(request, response);
+			viewPage = "wishList.do";
+		} else if(command.equals("/wishList.do")) {
+			service = new WisthListService();
+			service.execute(request, response);
+			viewPage = "wish/wishList.jsp";
 		}
 		RequestDispatcher dispatcher = request.getRequestDispatcher(viewPage);
 		dispatcher.forward(request, response);

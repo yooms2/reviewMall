@@ -130,7 +130,43 @@ public class ProductDao {
 		}
 		return products;
 	}
-	// (4) 상품등록
+	// (4) 상품번호로 DTO가져오기(상품 상세보기)
+	public ProductDto productContent(int pid) {
+		ProductDto product = null;
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		String sql = "SELECT * FROM PRODUCT WHERE pID = ?";
+		try {
+			conn = ds.getConnection();
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, pid);
+			rs = pstmt.executeQuery();
+			if(rs.next()) {
+				String pname = rs.getString("pname");
+				int pprice = rs.getInt("pprice");
+				String psize = rs.getString("psize");
+				String pcategory = rs.getString("pcategory");
+				String paimage = rs.getString("paimage");
+				String pbimage = rs.getString("pbimage");
+				String pcontent = rs.getString("pcontent");
+				product = new ProductDto(pid, pname, pprice, psize, pcategory, paimage, pbimage, pcontent);
+			}
+		} catch (SQLException e) {
+			System.out.println(e.getMessage());
+		} finally {
+			try {
+				if(rs!=null) rs.close();
+				if(pstmt!=null) pstmt.close();
+				if(conn!=null) conn.close();
+			} catch (SQLException e) {
+				System.out.println(e.getMessage());
+			}
+		}
+		return product;
+		
+	}
+	// (5) 상품등록
 	public int addProduct(ProductDto product) {
 		int result = FAIL;
 		Connection conn = null;
@@ -157,7 +193,7 @@ public class ProductDao {
 		}
 		return result;
 	}
-	// (5) 상품수정
+	// (6) 상품수정
 	public int modifyProduct(ProductDto product) {
 		int result = FAIL;
 		Connection conn = null;
@@ -195,8 +231,8 @@ public class ProductDao {
 		}
 		return result;
 	}
-	// (6) 상품삭제
-	public int delete(int pid) {
+	// (7) 상품삭제
+	public int deleteProduct(int pid) {
 		int result = FAIL;
 		Connection conn = null;
 		PreparedStatement pstmt = null;

@@ -19,8 +19,11 @@ html, body {
 	box-sizing: border-box;
 	min-height: 100%;
 }
+.content caption {
+	margin-bottom: 50px;
+}
 .content table {
-	width: 70%; height: 70%; box-sizing: border-box;
+	width: 70%; box-sizing: border-box;
 	margin: 0 auto;
 }
 .content tr th, .content tr td {
@@ -35,12 +38,21 @@ html, body {
 	cursor: pointer;
 }
 .content input {
-	width: 423.75px;
-	height: 25px;
+	width: 500px;
+	height: 50px;
+	
 }
 .content input.btn {
 	width: 150px;
 	height: 30px;
+}
+.search {
+	width: 50px;
+}
+.paging {
+	font-size: .6em;
+	text-align: center;
+	margin-top: 60px;
 }
 .footer {
 	width: 100%; position: absolute; bottom: 0; left: 0;

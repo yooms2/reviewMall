@@ -81,9 +81,11 @@ SELECT COUNT(*) CNT FROM PRODUCT;
 -- (3) 상품검색
 SELECT * FROM PRODUCT
     WHERE pNAME LIKE '%'||TRIM(UPPER(' 상 '))||'%';
--- (4) 상품등록
+-- (4) 상품번호로 DTO가져오기(상품 상세보기)
+SELECT * FROM PRODUCT WHERE pID = '316';
+-- (5) 상품등록
 INSERT INTO PRODUCT VALUES (PRONUM_SEQ.NEXTVAL, '오렌지 맨투맨', 40000, 'M사이즈', '남성용', '5-1.png', NULL, NULL);
--- (5) 상품수정
+-- (6) 상품수정
 UPDATE PRODUCT
     SET pNAME = '검정 니트',
         pPRICE = '78000',
@@ -93,11 +95,13 @@ UPDATE PRODUCT
         pBIMAGE = '니트 상세사진',
         pCONTENT = '검정색 울 니트'
     WHERE pID = '1';
--- (6) 상품삭제
+-- (7) 상품삭제
 DELETE FROM PRODUCT WHERE pID = '6';
 
 ------------------------------------------------------------------------WISHLIST
--- (1) 관심목록 리스트(startRow ~ endRow)
+-- (1) DTO가져오기(pID)
+SELECT * FROM WISHLIST WHERE pID = '1';
+-- (2) 관심목록 리스트(startRow ~ endRow)
 SELECT W.*, mNAME, pNAME
     FROM WISHLIST W, MEMBER M, PRODUCT P 
     WHERE W.mID=M.mID AND W.pID=P.pID;
@@ -106,11 +110,13 @@ SELECT *
                                         FROM WISHLIST W, MEMBER M, PRODUCT P
                                         WHERE W.mID=M.mID AND W.pID=P.pID ORDER BY wID DESC) A)
     WHERE RN BETWEEN 1 AND 5 AND mID = 'bbbb';
--- (2) 관심목록 개수(mID)
+-- (3) 관심목록 개수(mID)
 SELECT COUNT(*) FROM WISHLIST WHERE mID = 'aaaa';
--- (3) 관심목록 삭제(wID)
+-- (4) 관심목록 추가
+INSERT INTO WISHLIST VALUES (WISHNUM_SEQ.NEXTVAL, 'aaaa', 1);
+-- (5) 관심목록 삭제(wID)
 DELETE FROM WISHLIST WHERE mID = 'aaaa' AND wID = '1';
--- (4) 회원탈퇴시 관심목록 모두 제거
+-- (6) 회원탈퇴시 관심목록 모두 제거
 DELETE FROM WISHLIST WHERE mID = 'aaaa';
 COMMIT;
 

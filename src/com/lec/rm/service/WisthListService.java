@@ -3,23 +3,24 @@ package com.lec.rm.service;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.lec.rm.dao.ProductDao;
+import com.lec.rm.dao.WishListDao;
 
-public class ProductListService implements Service {
+public class WisthListService implements Service {
 	@Override
 	public void execute(HttpServletRequest request, HttpServletResponse response) {
 		String pageNum = request.getParameter("pageNum");
-		String mid = request.getParameter("mid");
-		String mname = request.getParameter("mname");
 		if(pageNum==null) pageNum = "1";
+		String mid = request.getParameter("mid");
+		String pname = request.getParameter("pname");
+		int pid = Integer.parseInt(request.getParameter("pid"));
 		int currentPage = Integer.parseInt(pageNum);
-		final int  PAGESIZE = 40, BLOCKSIZE = 5;
+		final int PAGESIZE = 5, BLOCKSIZE = 10;
 		int startRow = (currentPage - 1) * PAGESIZE + 1;
 		int endRow = startRow + PAGESIZE - 1;
-		ProductDao pDao = ProductDao.getInstance();
-		request.setAttribute("productList", pDao.productList(startRow, endRow));
-		int productCount = pDao.productCount();
-		int pageCnt = (int)Math.ceil((double)productCount/PAGESIZE);
+		WishListDao wDao = WishListDao.getInstance();
+		request.setAttribute("wishList", wDao.wishList(startRow, endRow, mid));
+		int wishCount = wDao.wishCount(mid);
+		int pageCnt = (int)Math.ceil((double)wishCount/PAGESIZE);
 		int startPage = ((currentPage-1)/BLOCKSIZE) * BLOCKSIZE + 1;
 		int endPage = startPage + BLOCKSIZE - 1;
 		if(endPage > pageCnt) {

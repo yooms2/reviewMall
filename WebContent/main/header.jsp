@@ -29,6 +29,8 @@
 				<ul>
 					<li><a href="${conPath }/boardList.do">게시판</a></li>
 					<li><a href="${conPath }/logout.do">로그아웃</a></li>
+					<li><a href="${conPath }/productList.do">상품리스트</a></li>
+					<li><a href="${conPath }/wishList.do?mid=${member.mid }">관심목록</a></li>
 					<li><a href="${conPath }/modifyView.do">마이페이지</a></li>
 					<li><a>${member.mname } 님</a></li>
 				</ul>

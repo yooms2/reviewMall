@@ -53,7 +53,8 @@ CREATE SEQUENCE PRONUM_SEQ MAXVALUE 999999 NOCACHE NOCYCLE;
 INSERT INTO PRODUCT VALUES (PRONUM_SEQ.NEXTVAL, '그라픽 무지 맨투맨 그레이', 35000, 'S사이즈', '남성용', '1-1.png', '1-2.png', '그라픽(GRPICK)은 Graphic(인쇄디자인)+Pic(선택하다)의 합성어로, 1000개 이상의 그래픽 아카이브. 그 기본을 토대로 다양한 그래픽 디자인을 선보이는 브래드입니다.');
 INSERT INTO PRODUCT VALUES (PRONUM_SEQ.NEXTVAL, '그라픽 무지 맨투맨 그린', 38000, 'M사이즈', '남성용', '2-1.png', '2-2.png', '그라픽(GRPICK)은 Graphic(인쇄디자인)+Pic(선택하다)의 합성어로, 1000개 이상의 그래픽 아카이브. 그 기본을 토대로 다양한 그래픽 디자인을 선보이는 브래드입니다.');
 INSERT INTO PRODUCT VALUES (PRONUM_SEQ.NEXTVAL, '그라픽 무지 맨투맨 네이비', 32000, 'L사이즈', '남성용', '3-1.png', '3-2.png', '그라픽(GRPICK)은 Graphic(인쇄디자인)+Pic(선택하다)의 합성어로, 1000개 이상의 그래픽 아카이브. 그 기본을 토대로 다양한 그래픽 디자인을 선보이는 브래드입니다.');
-INSERT INTO PRODUCT VALUES (PRONUM_SEQ.NEXTVAL, '그라픽 무지 맨투맨 퍼플', 33500, 'XL사이즈', '남성용', '4-1.png', '4-1.png', '그라픽(GRPICK)은 Graphic(인쇄디자인)+Pic(선택하다)의 합성어로, 1000개 이상의 그래픽 아카이브. 그 기본을 토대로 다양한 그래픽 디자인을 선보이는 브래드입니다.');
+INSERT INTO PRODUCT VALUES (PRONUM_SEQ.NEXTVAL, '그라픽 무지 맨투맨 퍼플', 33500, 'XL사이즈', '남성용', '4-1.png', '4-2.png', '그라픽(GRPICK)은 Graphic(인쇄디자인)+Pic(선택하다)의 합성어로, 1000개 이상의 그래픽 아카이브. 그 기본을 토대로 다양한 그래픽 디자인을 선보이는 브래드입니다.');
+INSERT INTO PRODUCT VALUES (PRONUM_SEQ.NEXTVAL, '그라픽 무지 맨투맨 오렌지', 36500, 'XXL사이즈', '남성용', '5-1.png', '5-2.png', '그라픽(GRPICK)은 Graphic(인쇄디자인)+Pic(선택하다)의 합성어로, 1000개 이상의 그래픽 아카이브. 그 기본을 토대로 다양한 그래픽 디자인을 선보이는 브래드입니다.');
 SELECT * FROM PRODUCT;
 
 ------------------------------------------------------------------------WISHLIST
@@ -61,7 +62,7 @@ DROP SEQUENCE WISHNUM_SEQ;
 CREATE TABLE WISHLIST(
     wID NUMBER(6) PRIMARY KEY,
     mID VARCHAR2(100) REFERENCES MEMBER(mID),
-    pID NUMBER(2) REFERENCES PRODUCT(pID)
+    pID NUMBER(6) REFERENCES PRODUCT(pID)
 );
 CREATE SEQUENCE WISHNUM_SEQ MAXVALUE 99 NOCACHE NOCYCLE;
 INSERT INTO WISHLIST VALUES (WISHNUM_SEQ.NEXTVAL, 'aaaa', 1);
