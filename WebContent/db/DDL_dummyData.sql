@@ -55,6 +55,9 @@ INSERT INTO PRODUCT VALUES (PRONUM_SEQ.NEXTVAL, '그라픽 무지 맨투맨 그�
 INSERT INTO PRODUCT VALUES (PRONUM_SEQ.NEXTVAL, '그라픽 무지 맨투맨 네이비', 32000, 'L사이즈', '남성용', '3-1.png', '3-2.png', '그라픽(GRPICK)은 Graphic(인쇄디자인)+Pic(선택하다)의 합성어로, 1000개 이상의 그래픽 아카이브. 그 기본을 토대로 다양한 그래픽 디자인을 선보이는 브래드입니다.');
 INSERT INTO PRODUCT VALUES (PRONUM_SEQ.NEXTVAL, '그라픽 무지 맨투맨 퍼플', 33500, 'XL사이즈', '남성용', '4-1.png', '4-2.png', '그라픽(GRPICK)은 Graphic(인쇄디자인)+Pic(선택하다)의 합성어로, 1000개 이상의 그래픽 아카이브. 그 기본을 토대로 다양한 그래픽 디자인을 선보이는 브래드입니다.');
 INSERT INTO PRODUCT VALUES (PRONUM_SEQ.NEXTVAL, '그라픽 무지 맨투맨 오렌지', 36500, 'XXL사이즈', '남성용', '5-1.png', '5-2.png', '그라픽(GRPICK)은 Graphic(인쇄디자인)+Pic(선택하다)의 합성어로, 1000개 이상의 그래픽 아카이브. 그 기본을 토대로 다양한 그래픽 디자인을 선보이는 브래드입니다.');
+INSERT INTO PRODUCT VALUES (PRONUM_SEQ.NEXTVAL, '앨빈클로 핀턱 무지 밴드 반바지 PAN1456 그레이', 22500, '30사이즈', '남성용', '6-1.png', NULL, '출시 연도: 2022년도 / 출시 계절: 여름 / 사용대상 구분: 남녀공용 /쿠팡상품번호: 6643161974 - 15194357312');
+INSERT INTO PRODUCT VALUES (PRONUM_SEQ.NEXTVAL, '앨빈클로 핀턱 무지 밴드 반바지 PAN1456 블랙', 23500, '32사이즈', '남성용', '7-1.png', NULL, '출시 연도: 2022년도 / 출시 계절: 여름 / 사용대상 구분: 남녀공용 /쿠팡상품번호: 6643161974 - 15194357312');
+INSERT INTO PRODUCT VALUES (PRONUM_SEQ.NEXTVAL, '앨빈클로 핀턱 무지 밴드 반바지 PAN1456 백염', 21500, '34사이즈', '남성용', '8-1.png', NULL, '출시 연도: 2022년도 / 출시 계절: 여름 / 사용대상 구분: 남녀공용 /쿠팡상품번호: 6643161974 - 15194357312');
 SELECT * FROM PRODUCT;
 
 ------------------------------------------------------------------------WISHLIST
@@ -64,7 +67,7 @@ CREATE TABLE WISHLIST(
     mID VARCHAR2(100) REFERENCES MEMBER(mID),
     pID NUMBER(6) REFERENCES PRODUCT(pID)
 );
-CREATE SEQUENCE WISHNUM_SEQ MAXVALUE 99 NOCACHE NOCYCLE;
+CREATE SEQUENCE WISHNUM_SEQ MAXVALUE 999999 NOCACHE NOCYCLE;
 INSERT INTO WISHLIST VALUES (WISHNUM_SEQ.NEXTVAL, 'aaaa', 1);
 INSERT INTO WISHLIST VALUES (WISHNUM_SEQ.NEXTVAL, 'aaaa', 2);
 INSERT INTO WISHLIST VALUES (WISHNUM_SEQ.NEXTVAL, 'aaaa', 3);
@@ -74,7 +77,6 @@ INSERT INTO WISHLIST VALUES (WISHNUM_SEQ.NEXTVAL, 'bbbb', 2);
 INSERT INTO WISHLIST VALUES (WISHNUM_SEQ.NEXTVAL, 'cccc', 3);
 INSERT INTO WISHLIST VALUES (WISHNUM_SEQ.NEXTVAL, 'cccc', 4);
 INSERT INTO WISHLIST VALUES (WISHNUM_SEQ.NEXTVAL, 'cccc', 1);
-SELECT * FROM WISHLIST;
 
 ---------------------------------------------------------------------------BOARD
 DROP SEQUENCE BOARDNUM_SEQ;

@@ -29,24 +29,23 @@ public class WishListDao {
 	public static WishListDao getInstance() {
 		return instance;
 	}
-	// (1) DTO가져오기(pID)
-	public WishListDto wishProduct(int pid) {
+	// (1) DTO가져오기(pID) -- 상세보기
+	public WishListDto wishProduct(int wid) {
 		WishListDto dto = null;
 		Connection conn = null;
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
-		String sql = "SELECT * FROM WISHLIST WHERE pID = ?";
+		String sql = "SELECT W.*, PNAME FROM WISHLIST W, PRODUCT P WHERE W.pID=P.pID AND wID = ?";
 		try {
 			conn = ds.getConnection();
 			pstmt = conn.prepareStatement(sql);
-			pstmt.setInt(1, pid);
+			pstmt.setInt(1, wid);
 			rs = pstmt.executeQuery();
 			if(rs.next()) {
-				int wid = rs.getInt("wid");
 				String mid = rs.getString("mid");
-				String mname = rs.getString("mname");
 				String pname = rs.getString("pname");
-				dto = new WishListDto(wid, mid, mname, pname, pid);
+				int pid = rs.getInt("pid");
+				dto = new WishListDto(wid, mid, null, pname, pid);
 			}
 		} catch (SQLException e) {
 			System.out.println(e.getMessage());
@@ -67,24 +66,22 @@ public class WishListDao {
 		Connection conn = null;
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
-		String sql = "SELECT *" + 
-				"    FROM (SELECT ROWNUM RN, A.* FROM (SELECT W.*, mNAME, pNAME" + 
-				"                                        FROM WISHLIST W, MEMBER M, PRODUCT P" + 
-				"                                        WHERE W.mID=M.mID AND W.pID=P.pID ORDER BY wID DESC) A)" + 
-				"    WHERE RN BETWEEN ? AND ? AND mID = ?";
+		String sql = "SELECT * FROM (SELECT ROWNUM RN, A.* FROM " + 
+				"        (SELECT W.*, pNAME   FROM WISHLIST W, PRODUCT P" + 
+				"        WHERE W.pID=P.pID AND mID = ? ORDER BY wID DESC) A)" + 
+				"				 WHERE RN BETWEEN ? AND ?";
 		try {
 			conn = ds.getConnection();
 			pstmt = conn.prepareStatement(sql);
-			pstmt.setInt(1, startRow);
-			pstmt.setInt(2, endRow);
-			pstmt.setString(3, mid);
+			pstmt.setString(1, mid);
+			pstmt.setInt(2, startRow);
+			pstmt.setInt(3, endRow);
 			rs = pstmt.executeQuery();
 			while(rs.next()) {
 				int wid = rs.getInt("wid");
-				String mname = rs.getString("mname");
 				String pname = rs.getString("pname");
 				int pid = rs.getInt("pid");
-				wishlists.add(new WishListDto(wid, mid, mname, pname, pid));
+				wishlists.add(new WishListDto(wid, mid, null, pname, pid));
 			}
 		} catch (SQLException e) {
 			System.out.println(e.getMessage());
@@ -152,7 +149,7 @@ public class WishListDao {
 		return result;
 	}
 	// (5) 관심목록 삭제(wID)
-	public int delete(String mid, int wid) {
+	public int deleteWish(String mid, int wid) {
 		int result = FAIL;
 		Connection conn = null;
 		PreparedStatement pstmt = null;

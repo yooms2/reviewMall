@@ -9,15 +9,16 @@ public class ProductListService implements Service {
 	@Override
 	public void execute(HttpServletRequest request, HttpServletResponse response) {
 		String pageNum = request.getParameter("pageNum");
-		String mid = request.getParameter("mid");
-		String mname = request.getParameter("mname");
 		if(pageNum==null) pageNum = "1";
+//		String mid = request.getParameter("mid");
+//		String mname = request.getParameter("mname");
+		String pname = request.getParameter("pname");
 		int currentPage = Integer.parseInt(pageNum);
 		final int  PAGESIZE = 40, BLOCKSIZE = 5;
 		int startRow = (currentPage - 1) * PAGESIZE + 1;
 		int endRow = startRow + PAGESIZE - 1;
 		ProductDao pDao = ProductDao.getInstance();
-		request.setAttribute("productList", pDao.productList(startRow, endRow));
+		request.setAttribute("productList", pDao.productList(startRow, endRow, pname));
 		int productCount = pDao.productCount();
 		int pageCnt = (int)Math.ceil((double)productCount/PAGESIZE);
 		int startPage = ((currentPage-1)/BLOCKSIZE) * BLOCKSIZE + 1;

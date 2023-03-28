@@ -31,6 +31,11 @@
 					location.href="${conPath }/productContent.do?pid="+pid+"&pageNum=${pageNum }";
 				}
 			});
+			/* $('.search').keyup(function() {
+				var pname = $(this).val().trim();
+				alert(pname);
+				location.href="${conPath }/productSearch.do?pname="+{product.pname };
+			}); */
 		});
 	</script>
 </head>
@@ -51,11 +56,11 @@
 		<jsp:include page="../main/header.jsp"/>
 		</div>
 		<div class="content">
-			<form action="${conPath }/productSearch.do">
-				<input type="text" name="schPname" placeholder="상품명을 입력해 주세요">
-				<input type="submit" value="검색" class="search" style="width:50px">
-				<input type="hidden" name="mid" value="${member.mid }">
-				<input type="hidden" name="mname" value="${member.mname }">
+			<form action="${conPath }/productList.do">
+				<input type="text" name="pname" class="search" maxlength="33" value="${param.pname }" placeholder="상품명을 입력해 주세요">
+				<input type="submit" value="검색" style="width:50px">
+				<%-- <input type="hidden" name="mid" value="${member.mid }">
+				<input type="hidden" name="mname" value="${member.mname }"> --%>
 			</form>
 			<br>
 			<table>
@@ -75,7 +80,8 @@
 								<img src="${conPath }/photoUp/${product.paimage }" alt="대표이미지"><br>
 								${product.pname }<br>
 								<fmt:formatNumber type="number" maxFractionDigits="3" value="${product.pprice }"/>원<br>
-								${product.psize }
+								${product.psize }<br>
+								${product.pcategory }
 								<c:set var="i" value="${i+1 }"/>
 							</td>
 						</c:forEach>

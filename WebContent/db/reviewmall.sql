@@ -72,15 +72,16 @@ INSERT INTO BOARD (bID, mID, bTITLE, bCONTENT, bFILENAME, bGROUP, bSTEP, bINDENT
 DELETE FROM BOARD WHERE mID = 'aaaa';
 
 -------------------------------------------------------------------------PRODUCT
--- (1) 상품목록 리스트
-SELECT *
-    FROM (SELECT ROWNUM RN, A.* FROM (SELECT * FROM PRODUCT ORDER BY pID DESC) A)
+-- (1) 상품목록 리스트(검색 포함)
+SELECT * 
+    FROM (SELECT ROWNUM RN, A.* FROM 
+        (SELECT * FROM PRODUCT WHERE pNAME LIKE '%'||TRIM(UPPER(' 오렌지 '))||'%' ORDER BY pID DESC) A)
     WHERE RN BETWEEN 1 AND 300;
 -- (2) 상품 개수
 SELECT COUNT(*) CNT FROM PRODUCT;
 -- (3) 상품검색
 SELECT * FROM PRODUCT
-    WHERE pNAME LIKE '%'||TRIM(UPPER(' 상 '))||'%';
+    WHERE pNAME LIKE '%'||TRIM(UPPER(' 오렌지 '))||'%';
 -- (4) 상품번호로 DTO가져오기(상품 상세보기)
 SELECT * FROM PRODUCT WHERE pID = '316';
 -- (5) 상품등록
@@ -99,9 +100,15 @@ UPDATE PRODUCT
 DELETE FROM PRODUCT WHERE pID = '6';
 
 ------------------------------------------------------------------------WISHLIST
--- (1) DTO가져오기(pID)
-SELECT * FROM WISHLIST WHERE pID = '1';
+-- (1) DTO가져오기(wID) -- 상세보기
+SELECT W.*, PNAME FROM WISHLIST W, PRODUCT P WHERE W.pID=P.pID AND wID = '16';
 -- (2) 관심목록 리스트(startRow ~ endRow)
+SELECT * FROM WISHLIST where mID='aaaa' ORDER BY wID DESC;
+SELECT * FROM (SELECT ROWNUM RN, A.* FROM 
+        (SELECT W.*, pNAME   FROM WISHLIST W, PRODUCT P
+        WHERE W.pID=P.pID AND mID = 'aaaa' ORDER BY wID DESC) A)
+            WHERE RN BETWEEN 6 AND 10;
+                 
 SELECT W.*, mNAME, pNAME
     FROM WISHLIST W, MEMBER M, PRODUCT P 
     WHERE W.mID=M.mID AND W.pID=P.pID;
@@ -109,7 +116,7 @@ SELECT *
     FROM (SELECT ROWNUM RN, A.* FROM (SELECT W.*, mNAME, pNAME
                                         FROM WISHLIST W, MEMBER M, PRODUCT P
                                         WHERE W.mID=M.mID AND W.pID=P.pID ORDER BY wID DESC) A)
-    WHERE RN BETWEEN 1 AND 5 AND mID = 'bbbb';
+    WHERE RN BETWEEN 1 AND 100 AND mID = 'aaaa';
 -- (3) 관심목록 개수(mID)
 SELECT COUNT(*) FROM WISHLIST WHERE mID = 'aaaa';
 -- (4) 관심목록 추가
@@ -119,7 +126,4 @@ DELETE FROM WISHLIST WHERE mID = 'aaaa' AND wID = '1';
 -- (6) 회원탈퇴시 관심목록 모두 제거
 DELETE FROM WISHLIST WHERE mID = 'aaaa';
 COMMIT;
-
-
-
 

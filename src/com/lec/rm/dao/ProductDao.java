@@ -30,30 +30,29 @@ public class ProductDao {
 		return instance;
 	}
 	// (1) 상품목록 리스트
-	public ArrayList<ProductDto> productList(int startRow, int endRow) {
+	public ArrayList<ProductDto> productList(int startRow, int endRow, String pname) {
 		ArrayList<ProductDto> products = new ArrayList<ProductDto>();
 		Connection conn = null;
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
-		String sql = "SELECT *" + 
-				"    FROM (SELECT ROWNUM RN, A.* FROM (SELECT * FROM PRODUCT ORDER BY pID DESC) A)" + 
+		String sql = "SELECT * " + 
+				"    FROM (SELECT ROWNUM RN, A.* FROM " + 
+				"        (SELECT * FROM PRODUCT WHERE pNAME LIKE '%'||TRIM(UPPER(' ? '))||'%' ORDER BY pID DESC) A)" + 
 				"    WHERE RN BETWEEN ? AND ?";
 		try {
 			conn = ds.getConnection();
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setInt(1, startRow);
 			pstmt.setInt(2, endRow);
+			pstmt.setString(3, pname);
 			rs = pstmt.executeQuery();
 			while(rs.next()) {
 				int pid = rs.getInt("pid");
-				String pname = rs.getString("pname");
 				int pprice = rs.getInt("pprice");
 				String psize = rs.getString("psize");
 				String pcategory = rs.getString("pcategory");
 				String paimage = rs.getString("paimage");
-				String pbimage = rs.getString("pbimage");
-				String pcontent = rs.getString("pcontent");
-				products.add(new ProductDto(pid, pname, pprice, psize, pcategory, paimage, pbimage, pcontent));
+				products.add(new ProductDto(pid, pname, pprice, psize, pcategory, paimage, null, null));
 			}
 		} catch (SQLException e) {
 			System.out.println(e.getMessage());

@@ -6,6 +6,7 @@ import javax.servlet.http.HttpSession;
 
 import com.lec.rm.dao.BoardDao;
 import com.lec.rm.dao.MemberDao;
+import com.lec.rm.dao.WishListDao;
 import com.lec.rm.dto.MemberDto;
 
 public class MWithdrawService implements Service {
@@ -17,6 +18,8 @@ public class MWithdrawService implements Service {
 		if(sessionMember != null) {
 			mid = sessionMember.getMid();
 		}
+		WishListDao wDao = WishListDao.getInstance();
+		int count = wDao.withdrawWishList(mid);
 		BoardDao bDao = BoardDao.getInstance();
 		int cnt = bDao.withdrawBoard(mid);
 		MemberDao mDao = MemberDao.getInstance();

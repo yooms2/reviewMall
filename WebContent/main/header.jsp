@@ -16,6 +16,7 @@
 			<div class="gnb">
 				<ul>
 					<li><a href="${conPath }/boardList.do">게시판</a></li>
+					<li><a href="${conPath }/productList.do">상품리스트</a></li>
 					<li><a href="${conPath }/loginView.do">로그인</a></li>
 					<li><a href="${conPath }/joinView.do">회원가입</a></li>
 				</ul>

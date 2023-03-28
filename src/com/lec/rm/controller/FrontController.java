@@ -32,10 +32,13 @@ import com.lec.rm.service.ProductContentService;
 import com.lec.rm.service.ProductDeleteService;
 import com.lec.rm.service.Service;
 import com.lec.rm.service.WishListAddService;
-import com.lec.rm.service.WisthListService;
+import com.lec.rm.service.WishListContentService;
+import com.lec.rm.service.WishListDeleteService;
+import com.lec.rm.service.WishListService;
 import com.lec.rm.service.ProductListService;
 import com.lec.rm.service.ProductModifyService;
 import com.lec.rm.service.ProductModifyViewService;
+import com.lec.rm.service.ProductSearchService;
 
 @WebServlet("*.do")
 public class FrontController extends HttpServlet {
@@ -188,6 +191,10 @@ public class FrontController extends HttpServlet {
 			service = new ProductDeleteService();
 			service.execute(request, response);
 			viewPage = "productList.do";
+		} else if(command.equals("/productSearch.do")){
+			service = new ProductSearchService();
+			service.execute(request, response);
+			viewPage = "productList.do";
 			
 		// 관심목록
 		} else if(command.equals("/wishListAdd.do")) {
@@ -195,9 +202,17 @@ public class FrontController extends HttpServlet {
 			service.execute(request, response);
 			viewPage = "wishList.do";
 		} else if(command.equals("/wishList.do")) {
-			service = new WisthListService();
+			service = new WishListService();
 			service.execute(request, response);
 			viewPage = "wish/wishList.jsp";
+		} else if(command.equals("/wishListContent.do")) {
+			service = new WishListContentService();
+			service.execute(request, response);
+			viewPage = "wish/wishListContent.jsp";
+		} else if(command.equals("/wishListDelete.do")) {
+			service = new WishListDeleteService();
+			service.execute(request, response);
+			viewPage = "wishList.do";
 		}
 		RequestDispatcher dispatcher = request.getRequestDispatcher(viewPage);
 		dispatcher.forward(request, response);
