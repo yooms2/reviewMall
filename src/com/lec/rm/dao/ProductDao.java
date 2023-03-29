@@ -37,17 +37,18 @@ public class ProductDao {
 		ResultSet rs = null;
 		String sql = "SELECT * " + 
 				"    FROM (SELECT ROWNUM RN, A.* FROM " + 
-				"        (SELECT * FROM PRODUCT WHERE pNAME LIKE '%'||TRIM(UPPER(' ? '))||'%' ORDER BY pID DESC) A)" + 
+				"        (SELECT * FROM PRODUCT WHERE pNAME LIKE '%'||TRIM(UPPER(?))||'%' ORDER BY pID DESC) A)" + 
 				"    WHERE RN BETWEEN ? AND ?";
 		try {
 			conn = ds.getConnection();
 			pstmt = conn.prepareStatement(sql);
-			pstmt.setInt(1, startRow);
-			pstmt.setInt(2, endRow);
-			pstmt.setString(3, pname);
+			pstmt.setString(1, pname);
+			pstmt.setInt(2, startRow);
+			pstmt.setInt(3, endRow);
 			rs = pstmt.executeQuery();
 			while(rs.next()) {
 				int pid = rs.getInt("pid");
+				pname = rs.getString("pname");
 				int pprice = rs.getInt("pprice");
 				String psize = rs.getString("psize");
 				String pcategory = rs.getString("pcategory");
@@ -55,7 +56,7 @@ public class ProductDao {
 				products.add(new ProductDto(pid, pname, pprice, psize, pcategory, paimage, null, null));
 			}
 		} catch (SQLException e) {
-			System.out.println(e.getMessage());
+			System.out.println(e.getMessage() + "list");
 		} finally {
 			try {
 				if(rs!=null) rs.close();
@@ -93,6 +94,33 @@ public class ProductDao {
 		}
 		return count;
 	}
+	// (2) 상품 개수
+		public int productCount(String pname) {
+			int count = 0;
+			Connection conn = null;
+			PreparedStatement pstmt = null;
+			ResultSet rs = null;
+			String sql = "SELECT COUNT(*) CNT FROM PRODUCT WHERE pNAME LIKE '%'||TRIM(UPPER(?))||'%'";
+			try {
+				conn = ds.getConnection();
+				pstmt = conn.prepareStatement(sql);
+				pstmt.setString(1, pname);
+				rs = pstmt.executeQuery();
+				rs.next();
+				count = rs.getInt("cnt");
+			} catch (SQLException e) {
+				System.out.println(e.getMessage());
+			} finally {
+				try {
+					if(rs!=null) rs.close();
+					if(pstmt!=null) pstmt.close();
+					if(conn!=null) conn.close();
+				} catch (SQLException e) {
+					System.out.println(e.getMessage());
+				}
+			}
+			return count;
+		}
 	// (3) 상품검색
 	public ArrayList<ProductDto> getProducts(String pname) {
 		ArrayList<ProductDto> products = new ArrayList<ProductDto>();

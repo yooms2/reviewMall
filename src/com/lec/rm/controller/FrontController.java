@@ -46,6 +46,7 @@ public class FrontController extends HttpServlet {
 	private int modifyView = 0;
 	private int addView = 0;
 	private int proModi = 0;
+	private int adminView = 0;
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		actionDo(request, response);
 	}
@@ -85,9 +86,13 @@ public class FrontController extends HttpServlet {
 		// 관리자
 		} else if(command.equals("/adminLoginView.do")) {
 			viewPage = "admin/adminLogin.jsp";
+			adminView = 1;
 		} else if(command.equals("/adminLogin.do")) {
-			service = new ALoginService();
-			service.execute(request, response);
+			if(adminView == 1) {
+				service = new ALoginService();
+				service.execute(request, response);
+				adminView = 0;
+			}
 			viewPage = "allView.do";
 		} else if(command.equals("/allView.do")) {
 			service = new MAllViewService();
@@ -191,10 +196,10 @@ public class FrontController extends HttpServlet {
 			service = new ProductDeleteService();
 			service.execute(request, response);
 			viewPage = "productList.do";
-		} else if(command.equals("/productSearch.do")){
-			service = new ProductSearchService();
-			service.execute(request, response);
-			viewPage = "productList.do";
+//		} else if(command.equals("/productSearch.do")){
+//			service = new ProductSearchService();
+//			service.execute(request, response);
+//			viewPage = "productList.do";
 			
 		// 관심목록
 		} else if(command.equals("/wishListAdd.do")) {

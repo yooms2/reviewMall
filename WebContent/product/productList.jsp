@@ -11,8 +11,8 @@
 	<link href="${conPath }/css/style2.css" rel="stylesheet">
 	<style>
 		.content {
-			width: 1800px;
-			height: 4000px;
+			/* width: 1800px; */
+			height: 4300px;
 		}
 		.content td {
 			margin: 50px;
@@ -80,8 +80,7 @@
 								<img src="${conPath }/photoUp/${product.paimage }" alt="대표이미지"><br>
 								${product.pname }<br>
 								<fmt:formatNumber type="number" maxFractionDigits="3" value="${product.pprice }"/>원<br>
-								${product.psize }<br>
-								${product.pcategory }
+								${product.psize }
 								<c:set var="i" value="${i+1 }"/>
 							</td>
 						</c:forEach>

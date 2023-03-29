@@ -193,7 +193,7 @@
 					</tr>
 					<tr>
 						<th>주소</th>
-						<td><input type="text" name="maddress"></td>
+						<td><input type="text" name="maddress" id="addr"></td>
 					</tr>
 					<tr>
 						<td colspan="2" style="text-align:center;">

@@ -70,7 +70,7 @@
 					</tr>
 					<tr>
 						<th>상세설명</th>
-						<td><textarea name="pcontent" rows="20" cols="60" value="${product.pcontent }"></textarea></td>
+						<td><textarea name="pcontent" rows="20" cols="60">${product.pcontent }</textarea></td>
 					</tr>
 					<tr>
 						<td colspan="2">

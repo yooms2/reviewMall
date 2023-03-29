@@ -14,9 +14,7 @@
 			height: 100px;
 			line-height: 40px;
 			background-color: #808080;
-		}
-		footer #footer_content {
-			padding: 10px 0;
+			min-width: 600px;
 		}
 		footer p {
 			text-align: center;

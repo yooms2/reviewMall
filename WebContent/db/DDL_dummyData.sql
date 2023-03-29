@@ -50,14 +50,14 @@ CREATE TABLE PRODUCT(
     pCONTENT VARCHAR2(4000)
 );
 CREATE SEQUENCE PRONUM_SEQ MAXVALUE 999999 NOCACHE NOCYCLE;
-INSERT INTO PRODUCT VALUES (PRONUM_SEQ.NEXTVAL, '그라픽 무지 맨투맨 그레이', 35000, 'S사이즈', '남성용', '1-1.png', '1-2.png', '그라픽(GRPICK)은 Graphic(인쇄디자인)+Pic(선택하다)의 합성어로, 1000개 이상의 그래픽 아카이브. 그 기본을 토대로 다양한 그래픽 디자인을 선보이는 브래드입니다.');
-INSERT INTO PRODUCT VALUES (PRONUM_SEQ.NEXTVAL, '그라픽 무지 맨투맨 그린', 38000, 'M사이즈', '남성용', '2-1.png', '2-2.png', '그라픽(GRPICK)은 Graphic(인쇄디자인)+Pic(선택하다)의 합성어로, 1000개 이상의 그래픽 아카이브. 그 기본을 토대로 다양한 그래픽 디자인을 선보이는 브래드입니다.');
-INSERT INTO PRODUCT VALUES (PRONUM_SEQ.NEXTVAL, '그라픽 무지 맨투맨 네이비', 32000, 'L사이즈', '남성용', '3-1.png', '3-2.png', '그라픽(GRPICK)은 Graphic(인쇄디자인)+Pic(선택하다)의 합성어로, 1000개 이상의 그래픽 아카이브. 그 기본을 토대로 다양한 그래픽 디자인을 선보이는 브래드입니다.');
-INSERT INTO PRODUCT VALUES (PRONUM_SEQ.NEXTVAL, '그라픽 무지 맨투맨 퍼플', 33500, 'XL사이즈', '남성용', '4-1.png', '4-2.png', '그라픽(GRPICK)은 Graphic(인쇄디자인)+Pic(선택하다)의 합성어로, 1000개 이상의 그래픽 아카이브. 그 기본을 토대로 다양한 그래픽 디자인을 선보이는 브래드입니다.');
-INSERT INTO PRODUCT VALUES (PRONUM_SEQ.NEXTVAL, '그라픽 무지 맨투맨 오렌지', 36500, 'XXL사이즈', '남성용', '5-1.png', '5-2.png', '그라픽(GRPICK)은 Graphic(인쇄디자인)+Pic(선택하다)의 합성어로, 1000개 이상의 그래픽 아카이브. 그 기본을 토대로 다양한 그래픽 디자인을 선보이는 브래드입니다.');
-INSERT INTO PRODUCT VALUES (PRONUM_SEQ.NEXTVAL, '앨빈클로 핀턱 무지 밴드 반바지 PAN1456 그레이', 22500, '30사이즈', '남성용', '6-1.png', NULL, '출시 연도: 2022년도 / 출시 계절: 여름 / 사용대상 구분: 남녀공용 /쿠팡상품번호: 6643161974 - 15194357312');
-INSERT INTO PRODUCT VALUES (PRONUM_SEQ.NEXTVAL, '앨빈클로 핀턱 무지 밴드 반바지 PAN1456 블랙', 23500, '32사이즈', '남성용', '7-1.png', NULL, '출시 연도: 2022년도 / 출시 계절: 여름 / 사용대상 구분: 남녀공용 /쿠팡상품번호: 6643161974 - 15194357312');
-INSERT INTO PRODUCT VALUES (PRONUM_SEQ.NEXTVAL, '앨빈클로 핀턱 무지 밴드 반바지 PAN1456 백염', 21500, '34사이즈', '남성용', '8-1.png', NULL, '출시 연도: 2022년도 / 출시 계절: 여름 / 사용대상 구분: 남녀공용 /쿠팡상품번호: 6643161974 - 15194357312');
+INSERT INTO PRODUCT VALUES (PRONUM_SEQ.NEXTVAL, '그라픽 무지 맨투맨 그레이', 35000, 'S사이즈', '남성용', '1-1.png', '1-2.png', '그라픽(GRPICK)은 Graphic(인쇄디자인)+Pic(선택하다)의 합성어로, 1000개 이상의 그래픽 아카이브. 그 기본을 토대로 다양한 그래픽 디자인을 선보이는 브랜드입니다.');
+INSERT INTO PRODUCT VALUES (PRONUM_SEQ.NEXTVAL, '그라픽 무지 맨투맨 그린', 38000, 'M사이즈', '남성용', '2-1.png', '2-2.png', '그라픽(GRPICK)은 Graphic(인쇄디자인)+Pic(선택하다)의 합성어로, 1000개 이상의 그래픽 아카이브. 그 기본을 토대로 다양한 그래픽 디자인을 선보이는 브랜드입니다.');
+INSERT INTO PRODUCT VALUES (PRONUM_SEQ.NEXTVAL, '그라픽 무지 맨투맨 네이비', 32000, 'L사이즈', '남성용', '3-1.png', '3-2.png', '그라픽(GRPICK)은 Graphic(인쇄디자인)+Pic(선택하다)의 합성어로, 1000개 이상의 그래픽 아카이브. 그 기본을 토대로 다양한 그래픽 디자인을 선보이는 브랜드입니다.');
+INSERT INTO PRODUCT VALUES (PRONUM_SEQ.NEXTVAL, '그라픽 무지 맨투맨 퍼플', 33500, 'XL사이즈', '남성용', '4-1.png', '4-2.png', '그라픽(GRPICK)은 Graphic(인쇄디자인)+Pic(선택하다)의 합성어로, 1000개 이상의 그래픽 아카이브. 그 기본을 토대로 다양한 그래픽 디자인을 선보이는 브랜드입니다.');
+INSERT INTO PRODUCT VALUES (PRONUM_SEQ.NEXTVAL, '그라픽 무지 맨투맨 오렌지', 36500, 'XXL사이즈', '남성용', '5-1.png', '5-2.png', '그라픽(GRPICK)은 Graphic(인쇄디자인)+Pic(선택하다)의 합성어로, 1000개 이상의 그래픽 아카이브. 그 기본을 토대로 다양한 그래픽 디자인을 선보이는 브랜드입니다.');
+INSERT INTO PRODUCT VALUES (PRONUM_SEQ.NEXTVAL, '앨빈클로 핀턱 무지 밴드 반바지 PAN1456 그레이', 22500, '30사이즈', '남성용', '6-1.png', NULL, '출시 연도: 2022년도 / 출시 계절: 여름 / 사용대상 구분: 남녀공용');
+INSERT INTO PRODUCT VALUES (PRONUM_SEQ.NEXTVAL, '앨빈클로 핀턱 무지 밴드 반바지 PAN1456 블랙', 23500, '32사이즈', '남성용', '7-1.png', NULL, '출시 연도: 2022년도 / 출시 계절: 여름 / 사용대상 구분: 남녀공용');
+INSERT INTO PRODUCT VALUES (PRONUM_SEQ.NEXTVAL, '앨빈클로 핀턱 무지 밴드 반바지 PAN1456 백염', 21500, '34사이즈', '남성용', '8-1.png', NULL, '출시 연도: 2022년도 / 출시 계절: 여름 / 사용대상 구분: 남녀공용');
 SELECT * FROM PRODUCT;
 
 ------------------------------------------------------------------------WISHLIST

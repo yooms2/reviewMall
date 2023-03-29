@@ -47,7 +47,7 @@
 					<li><a href="${conPath }/logout.do">로그아웃</a></li>
 					<li><a href="${conPath }/productAddView.do">상품등록</a></li>
 					<li><a href="${conPath }/productList.do">상품리스트</a></li>
-					<li><a>${admin.aname } 님</a></li>
+					<li><a href="${conPath }/allView.do">${admin.aname } 님</a></li>
 				</ul>
 			</div>
 			<div class="logo">

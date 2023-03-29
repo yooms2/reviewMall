@@ -1,0 +1,53 @@
+@charset "UTF-8";
+
+/************************ footer 하단 ************************/
+html, body {
+	margin: 0; padding: 0; height: 100%;
+}
+#wrapper {
+	min-height: 100%; position: relative;
+	width: 100%;
+}
+.content {
+	margin: 0 auto;
+	width: 1460px;
+	height: 1700px;
+	text-align: center;
+	min-height: 100%;
+	max-width: 100%;
+}
+.content img {
+	width: 100%;
+	height: 100%;
+	display: block;
+	cursor: pointer;
+	box-sizing: border-box;
+}
+.content table {
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+.content table td {
+	box-sizing: border-box;
+	width: 1460px;
+	height: 500px;
+	text-align: center;
+}
+.content iframe {
+	box-sizing: border-box;
+	width: 730px;
+	height: 530px;
+	margin: 0 -348px;
+}
+/* .content table {
+	width: 100%; height: 100%;
+}
+.content tr td img {
+	width: 80%;
+	height: 270px;
+	border-bottom: 1px solid white;
+	cursor: pointer;
+} */
+.footer {
+	width: 100%; position: absolute; bottom: 0; left: 0;
+}

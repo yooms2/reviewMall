@@ -79,11 +79,12 @@ SELECT *
     WHERE RN BETWEEN 1 AND 300;
 -- (2) 상품 개수
 SELECT COUNT(*) CNT FROM PRODUCT;
+SELECT COUNT(*) CNT FROM PRODUCT WHERE pNAME LIKE '%'||TRIM(UPPER(' 오렌지 '))||'%';
 -- (3) 상품검색
 SELECT * FROM PRODUCT
     WHERE pNAME LIKE '%'||TRIM(UPPER(' 오렌지 '))||'%';
 -- (4) 상품번호로 DTO가져오기(상품 상세보기)
-SELECT * FROM PRODUCT WHERE pID = '316';
+SELECT * FROM PRODUCT WHERE pID = '317';
 -- (5) 상품등록
 INSERT INTO PRODUCT VALUES (PRONUM_SEQ.NEXTVAL, '오렌지 맨투맨', 40000, 'M사이즈', '남성용', '5-1.png', NULL, NULL);
 -- (6) 상품수정

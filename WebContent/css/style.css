@@ -3,6 +3,7 @@
 #content {
 	width: 700px;
 	margin: 50px auto;
+	max-width: 100%;
 }
 #content table {
 	border: 1px solid lightgray;
@@ -51,6 +52,7 @@ html, body {
 	padding-bottom: 150px; padding-top: 20px;
 	box-sizing: border-box;
 	min-height: 100%;
+	max-width: 100%;
 }
 .content table {
 	width: 100%; height: 100%; box-sizing: border-box;

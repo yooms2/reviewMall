@@ -16,14 +16,16 @@
 		#content table tr {
 			cursor: pointer;
 		}
+		.paging {
+			margin-top: 20px;
+		}
 	</style>
 	<script src="https://code.jquery.com/jquery-3.6.4.js"></script>
 	<script>
 		$(document).ready(function() {
 			$('td').click(function() {
-				$(this).attr('class') {
-					location.href="${conPath }/modifyView.do?mid=${member.mid }&pageNum=${pageNum }";
-				}
+				$(this).attr('class') 
+				location.href="${conPath }/modifyView.do?mid=${dto.mid}";
 			});
 		});
 	</script>

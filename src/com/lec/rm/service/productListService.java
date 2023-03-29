@@ -19,7 +19,7 @@ public class ProductListService implements Service {
 		int endRow = startRow + PAGESIZE - 1;
 		ProductDao pDao = ProductDao.getInstance();
 		request.setAttribute("productList", pDao.productList(startRow, endRow, pname));
-		int productCount = pDao.productCount();
+		int productCount = pDao.productCount(pname);
 		int pageCnt = (int)Math.ceil((double)productCount/PAGESIZE);
 		int startPage = ((currentPage-1)/BLOCKSIZE) * BLOCKSIZE + 1;
 		int endPage = startPage + BLOCKSIZE - 1;
