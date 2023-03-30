@@ -195,4 +195,27 @@ public class WishListDao {
 		}
 		return result;
 	}
+	// (7) 상품삭제시 관심목록 모두 제거
+		public int withdrawWishList(int pid) {
+			int result = FAIL;
+			Connection conn = null;
+			PreparedStatement pstmt = null;
+			String sql = "DELETE FROM WISHLIST WHERE pID = ?";
+			try {
+				conn = ds.getConnection();
+				pstmt = conn.prepareStatement(sql);
+				pstmt.setInt(1, pid);
+				result = pstmt.executeUpdate();
+			} catch (SQLException e) {
+				System.out.println(e.getMessage());
+			} finally {
+				try {
+					if(pstmt!=null) pstmt.close();
+					if(conn!=null) conn.close();
+				} catch (SQLException e) {
+					System.out.println(e.getMessage());
+				}
+			}
+			return result;
+		}
 }

@@ -112,7 +112,7 @@
 	</script>
 </head>
 <body>
-	<c:if test="${empty member }">
+	<c:if test="${empty member and empty admin}">
 		<script>
 			location.href="${conPath }/loginView.do";
 		</script>
@@ -139,7 +139,7 @@
 					<th>새로운 비밀번호 확인</th>
 					<td>
 						<input type="password" name="mpwChk" maxlength="16">
-						<span id="mpwConfirm"></span>
+						<p id="mpwConfirm"></p>
 					</td>
 				</tr>
 				<tr>
@@ -150,7 +150,7 @@
 					<th>닉네임</th>
 					<td>
 						<input type="text" name="mnickname" value="${member.mnickname }" required="required">
-						<span id="mnicknameConfirm"></span>
+						<p id="mnicknameConfirm"></p>
 					</td>
 				</tr>
 				<tr>
@@ -163,7 +163,7 @@
 					<th>이메일</th>
 					<td>
 						<input type="text" name="memail" value="${member.memail }">
-						<span id="memailConfirm"></span>
+						<p id="memailConfirm"></p>
 					</td>
 				</tr>
 				<tr>

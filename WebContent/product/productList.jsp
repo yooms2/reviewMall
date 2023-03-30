@@ -80,7 +80,7 @@
 								<img src="${conPath }/photoUp/${product.paimage }" alt="대표이미지"><br>
 								${product.pname }<br>
 								<fmt:formatNumber type="number" maxFractionDigits="3" value="${product.pprice }"/>원<br>
-								${product.psize }
+								${product.psize }(${product.pcategory })
 								<c:set var="i" value="${i+1 }"/>
 							</td>
 						</c:forEach>
@@ -91,6 +91,7 @@
 			<c:if test="${startPage > BLOCKSIZE }">
 				[ <a href="${conPath }/productList.do?pageNum=${startPage-1 }"> 이전 </a> ]
 			</c:if>
+			&nbsp;
 			<c:forEach var="i" begin="${startPage }" end="${endPage }">
 				<c:if test="${i == pageNum }">
 					[ <b> ${i } </b> ]
@@ -99,6 +100,7 @@
 					[ <a href="${conPath }/productList.do?pageNum=${i }"> ${i } </a> ]
 				</c:if>
 			</c:forEach>
+			&nbsp;
 			<c:if test="${endPage < pageCnt }">
 				[ <a href="${conPath }/productList.do?pageNum=${endPage+1 }"> 다음 </a> ]
 			</c:if>

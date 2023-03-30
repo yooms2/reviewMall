@@ -260,7 +260,7 @@ public class BoardDao {
 		}
 		return result;
 	}
-	// (7) 글 삭제하기
+	// (7) 글 삭제하기(원글만)
 	public int boardDelete(int bid) {
 		int result = FAIL;
 		Connection conn = null;
@@ -283,6 +283,35 @@ public class BoardDao {
 		}
 		return result;
 	}
+	// (7) 글 삭제하기(답글까지)
+		public int boardDelete(int bgroup, int bstep, int bindent) {
+			int result = FAIL;
+			Connection conn = null;
+			PreparedStatement pstmt = null;
+			String sql = "DELETE FROM BOARD " + 
+					"    WHERE bGROUP = ?" + 
+					"    AND (bSTEP >= ? AND bSTEP < (SELECT NVL(MIN(bSTEP), 9999) FROM BOARD WHERE bGROUP = ? AND bSTEP > ? AND bINDENT <= ?))";
+			try {
+				conn = ds.getConnection();
+				pstmt = conn.prepareStatement(sql);
+				pstmt.setInt(1, bgroup);
+				pstmt.setInt(2, bstep);
+				pstmt.setInt(3, bgroup);
+				pstmt.setInt(4, bstep);
+				pstmt.setInt(5, bindent);
+				result = pstmt.executeUpdate();
+			} catch (SQLException e) {
+				System.out.println(e.getMessage());
+			} finally {
+				try {
+					if(pstmt!=null) pstmt.close();
+					if(conn!=null) conn.close();
+				} catch (SQLException e) {
+					System.out.println(e.getMessage());
+				}
+			}
+			return result;
+		}
 	// (8) 답변글 쓰기 전(원글의bGROUP, 원글bSTEP보다 크면 fSTEP 증가)
 	private void boardStep(int bgroup, int bstep) {
 		Connection conn = null;

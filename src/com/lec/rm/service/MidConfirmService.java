@@ -14,7 +14,7 @@ public class MidConfirmService implements Service {
 		if(result == MemberDao.EXIST) {
 			request.setAttribute("midConfirm", "<b>사용중인 ID 입니다</b>");
 		} else {
-			request.setAttribute("midConfirm", "<strong>사용 가능한 ID 입니다</strong");
+			request.setAttribute("midConfirm", "<strong>사용 가능한 ID 입니다</strong>");
 		}
 	}
 }

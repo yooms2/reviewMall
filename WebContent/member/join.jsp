@@ -10,6 +10,11 @@
 	<title>Insert title here</title>
 	<link href="${conPath }/css/style.css" rel="stylesheet">
 	<link rel="stylesheet" href="//code.jquery.com/ui/1.13.2/themes/base/jquery-ui.css">
+	<style>
+		#content {
+			height: 1000px;
+		}
+	</style>
 	<script src="https://code.jquery.com/jquery-3.6.0.js"></script>
 	<script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
 	<script>
@@ -142,7 +147,7 @@
 						<th>아이디 <b>*</b></th>
 						<td>
 							<input type="text" name="mid" required="required" placeholder="영문+숫자 조합 4자 이상">
-							<span id="midConfirm"></span>
+							<p id="midConfirm"></p>
 						</td>
 					</tr>
 					<tr>
@@ -153,7 +158,7 @@
 						<th>비밀번호 확인 <b>*</b></th>
 						<td>
 							<input type="password" name="mpwChk" maxlength="16" placeholder="비밀번호는 4자~16자 " required="required">
-							<span id="mpwConfirm"></span>
+							<p id="mpwConfirm"></p>
 						</td>
 					</tr>
 					<tr>
@@ -164,7 +169,7 @@
 						<th>닉네임 <b>*</b></th>
 						<td>
 							<input type="text" name="mnickname" placeholder="닉네임은 2자 이상 " required="required">
-							<span id="mnicknameConfirm"></span>
+							<p id="mnicknameConfirm"></p>
 						</td>
 					</tr>
 					<tr>
@@ -177,7 +182,7 @@
 						<th>이메일</th>
 						<td>
 							<input type="text" name="memail">
-							<span id="memailConfirm"></span>
+							<p id="memailConfirm"></p>
 						</td>
 					</tr>
 					<tr>

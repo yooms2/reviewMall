@@ -44,6 +44,7 @@ import com.lec.rm.service.ProductSearchService;
 public class FrontController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	private int modifyView = 0;
+	private int writeView = 0;
 	private int addView = 0;
 	private int proModi = 0;
 	private int adminView = 0;
@@ -128,9 +129,13 @@ public class FrontController extends HttpServlet {
 		// 게시판
 		} else if(command.equals("/boardWriteView.do")) {
 			viewPage = "board/boardWrite.jsp";
+			writeView = 1;
 		} else if(command.equals("/boardWrite.do")) {
-			service = new BoardWriteService();
-			service.execute(request, response);
+			if(writeView == 1) {
+				service = new BoardWriteService();
+				service.execute(request, response);
+				writeView = 0;
+			}
 			viewPage = "boardList.do";
 		} else if(command.equals("/boardList.do")) {
 			service = new BoardListService();

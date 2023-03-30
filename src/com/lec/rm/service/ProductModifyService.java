@@ -22,7 +22,9 @@ public class ProductModifyService implements Service {
 		String path = request.getRealPath("photoUp");
 		int maxSize = 1024*1024;
 		String[] images = {"",""};
-		String[] dbimages = null;
+		String[] dbimages = new String[2];
+		/*String dbimages1 = null;
+		String dbimages2 = null;*/
 		MultipartRequest mRequest = null;
 		try {
 			mRequest = new MultipartRequest(request, path, maxSize, "utf-8", new DefaultFileRenamePolicy());
@@ -33,14 +35,25 @@ public class ProductModifyService implements Service {
 				images[idx] = mRequest.getFilesystemName(param);
 				idx ++;
 			}
+			/*dbimages1 = mRequest.getParameter("dbimages1"); 
+			dbimages2 = mRequest.getParameter("dbimages2");*/
+			dbimages[0] = mRequest.getParameter("dbPbimage");
+			dbimages[1] = mRequest.getParameter("dbPaimage");
+			for(int i=0 ; i<images.length ; i++) {
+				if(images[i]==null) {
+					images[i] = dbimages[i];
+				}
+			}
 			int pid = Integer.parseInt(mRequest.getParameter("pid"));
 			String pname = mRequest.getParameter("pname");
 			int pprice = Integer.parseInt(mRequest.getParameter("pprice"));
 			String psize = mRequest.getParameter("psize");
 			String pcategory = mRequest.getParameter("pcategory");
 			String paimage = images[1]==null? "noimage.png" : images[1];
+			String pbimage = images[0]==null? "" : images[0];
+			String pcontent = mRequest.getParameter("pcontent");
 			ProductDao pDao = ProductDao.getInstance();
-			ProductDto product = new ProductDto(pid, pname, pprice, psize, pcategory, paimage, null, null);
+			ProductDto product = new ProductDto(pid, pname, pprice, psize, pcategory, paimage, pbimage, pcontent);
 			int result = pDao.modifyProduct(product);
 			if(result == pDao.SUCCESS) {
 				request.setAttribute("productResult", "상품 수정이 완료되었습니다");

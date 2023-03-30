@@ -21,7 +21,7 @@ html, body {
 	max-width: 100%;
 }
 .content caption {
-	margin-bottom: 50px;
+	margin-bottom: 40px;
 }
 .content table {
 	width: 70%; box-sizing: border-box;
@@ -44,7 +44,11 @@ html, body {
 .content input {
 	width: 500px;
 	height: 50px;
-	
+}
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
 }
 .content input.btn {
 	width: 150px;
@@ -54,9 +58,9 @@ html, body {
 	width: 50px;
 }
 .paging {
-	font-size: .6em;
+	font-size: .45em;
 	text-align: center;
-	margin-top: 60px;
+	margin-top: 20px;
 }
 .footer {
 	width: 100%; position: absolute; bottom: 0; left: 0;

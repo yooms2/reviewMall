@@ -8,7 +8,7 @@
 <head>
 	<meta charset="UTF-8">
 	<title>Insert title here</title>
-	<link href="${conPath }/css/style3.css" rel="stylesheet">
+	<link href="${conPath }/css/style.css" rel="stylesheet">
 </head>
 <body>
 	<c:if test="${not empty loginError }">
@@ -38,28 +38,13 @@
 		<div class="content">
 			<table>
 				<tr>
-					<td colspan="2">
-						<img src="${conPath }/img/main1.png"  onclick="location.href='${conPath }/productList.do'">
-					</td>
+					<td><img src="${conPath }/img/join.gif" onclick="location.href='${conPath }/joinView.do'"></td>
 				</tr>
 				<tr>
-					<td>
-						<iframe src="https://www.fashionn.com/board/list_new.php?table=1006" frameborder=0 framespacing=0>
-						</iframe>
-					</td>
-					<td>
-						<img src="${conPath }/img/main2.png" onclick="location.href='${conPath }/joinView.do'" style="height:533px">
-					</td>
+					<td><img src="${conPath }/img/shirt.gif"  onclick="location.href='${conPath }/productList.do'"></td>
 				</tr>
 				<tr>
-					<td>
-						<img src="${conPath }/img/main3.png"  onclick="location.href='${conPath }/boardList.do'">
-					</td>
-					<td>
-						<h2>
-							자유게시판
-						</h2>
-					</td>
+					<td><img src="${conPath }/img/community.gif"  onclick="location.href='${conPath }/boardList.do'"></td>
 				</tr>
 			</table>
 		</div>

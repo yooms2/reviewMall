@@ -61,7 +61,11 @@ UPDATE BOARD
         bRDATE = SYSDATE
     WHERE bID = '1';
 -- (7) 글 삭제하기
-DELETE FROM BOARD WHERE bID = '1';
+DELETE FROM BOARD WHERE bID = '1'; -- 원글만 삭제
+DELETE FROM BOARD 
+    WHERE bGROUP = 259
+    AND (bSTEP >= 0 AND bSTEP < (SELECT NVL(MIN(bSTEP), 9999) FROM BOARD WHERE bGROUP = 259 AND bSTEP > 0 AND bINDENT <= 0));
+ROLLBACK;
 -- (8) 답변글 쓰기 전(원글의bGROUP, 원글bSTEP보다 크면 fSTEP 증가)
 UPDATE BOARD SET bSTEP = bSTEP + 1
     WHERE bGROUP = 1 AND bSTEP > 0;
@@ -86,7 +90,7 @@ SELECT * FROM PRODUCT
 -- (4) 상품번호로 DTO가져오기(상품 상세보기)
 SELECT * FROM PRODUCT WHERE pID = '317';
 -- (5) 상품등록
-INSERT INTO PRODUCT VALUES (PRONUM_SEQ.NEXTVAL, '오렌지 맨투맨', 40000, 'M사이즈', '남성용', '5-1.png', NULL, NULL);
+INSERT INTO PRODUCT VALUES (PRONUM_SEQ.NEXTVAL, '오렌지 맨투맨', 40000, 'M사이즈', '남성용', '5-1.png', '5-2.png', '그라픽 맨투맨');
 -- (6) 상품수정
 UPDATE PRODUCT
     SET pNAME = '검정 니트',
@@ -98,7 +102,19 @@ UPDATE PRODUCT
         pCONTENT = '검정색 울 니트'
     WHERE pID = '1';
 -- (7) 상품삭제
-DELETE FROM PRODUCT WHERE pID = '6';
+DELETE FROM PRODUCT WHERE pID = '6'; -- 회원탈퇴시
+DELETE FROM WISHLIST WHERE pID = '1'; -- 상품삭제시
+
+DELETE 
+    FROM PRODUCT P
+    WHERE EXISTS ( 
+        SELECT 1
+            FROM WISHLIST W
+            WHERE P.pID = W.pID
+            AND W.pID = '1'
+        ); 
+SELECT * FROM PRODUCT P, WISHLIST W WHERE P.pID=W.pID ORDER BY P.pID;
+ROLLBACK;
 
 ------------------------------------------------------------------------WISHLIST
 -- (1) DTO가져오기(wID) -- 상세보기

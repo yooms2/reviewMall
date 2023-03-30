@@ -31,7 +31,7 @@
 				</tr>
 				<tr>
 					<th>시중가</th>
-					<td>${product.pprice }</td>
+					<td><fmt:formatNumber value="${product.pprice }"/>원</td>
 				</tr>
 				<tr>
 					<th>사이즈</th>

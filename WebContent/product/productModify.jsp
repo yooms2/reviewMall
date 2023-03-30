@@ -24,8 +24,8 @@
 			<form action="${conPath }/productModify.do" method="post" enctype="multipart/form-data">
 				<input type="hidden" name="pageNum" value="${param.pageNum }">
 				<input type="hidden" name="pid" value="${product.pid }">
-				<input type="hidden" name="dbimages" value="${product.paimage }">
-				<input type="hidden" name="dbimages" value="${product.pbimage }">
+				<input type="hidden" name="dbPaimage" value="${product.paimage }">
+				<input type="hidden" name="dbPbimage" value="${product.pbimage }">
 				<table>
 					<caption>${product.pid }번째 상품 수정</caption>
 					<tr>
@@ -47,7 +47,7 @@
 					<tr>
 						<th>대표이미지</th>
 						<td>
-							<input type="file" name="paimage" value="${product.paimage }" required="required">
+							<input type="file" name="paimage" value="${product.paimage }">
 							<c:if test="${not empty product.paimage }">
 								${product.paimage }
 							</c:if>

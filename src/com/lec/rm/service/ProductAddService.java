@@ -42,8 +42,10 @@ public class ProductAddService implements Service {
 			String psize = mRequest.getParameter("psize");
 			String pcategory = mRequest.getParameter("pcategory");
 			String paimage = images[1]==null ? "noimage.png" : images[1]; // 필수항목이라 대체이미지 사용할 일 없음
+			String pbimage = images[0]==null ? "" : images[0];
+			String pcontent = mRequest.getParameter("pcontent");
 			ProductDao pDao = ProductDao.getInstance();
-			ProductDto product = new ProductDto(0, pname, pprice, psize, pcategory, paimage, null, null);
+			ProductDto product = new ProductDto(0, pname, pprice, psize, pcategory, paimage, pbimage, pcontent);
 			result = pDao.addProduct(product);
 			if(result == ProductDao.SUCCESS) {
 				HttpSession session = request.getSession();

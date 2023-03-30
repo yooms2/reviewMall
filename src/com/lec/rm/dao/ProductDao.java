@@ -198,7 +198,7 @@ public class ProductDao {
 		int result = FAIL;
 		Connection conn = null;
 		PreparedStatement pstmt = null;
-		String sql = "INSERT INTO PRODUCT VALUES (PRONUM_SEQ.NEXTVAL, ?, ?, ?, ?, ?, NULL, NULL)";
+		String sql = "INSERT INTO PRODUCT VALUES (PRONUM_SEQ.NEXTVAL, ?, ?, ?, ?, ?, ?, ?)";
 		try {
 			conn = ds.getConnection();
 			pstmt = conn.prepareStatement(sql);
@@ -207,6 +207,8 @@ public class ProductDao {
 			pstmt.setString(3, product.getPsize());
 			pstmt.setString(4, product.getPcategory());
 			pstmt.setString(5, product.getPaimage());
+			pstmt.setString(6, product.getPbimage());
+			pstmt.setString(7, product.getPcontent());
 			result = pstmt.executeUpdate();
 		} catch (SQLException e) {
 			System.out.println(e.getMessage());

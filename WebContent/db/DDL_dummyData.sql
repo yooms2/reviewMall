@@ -58,6 +58,15 @@ INSERT INTO PRODUCT VALUES (PRONUM_SEQ.NEXTVAL, '그라픽 무지 맨투맨 오�
 INSERT INTO PRODUCT VALUES (PRONUM_SEQ.NEXTVAL, '앨빈클로 핀턱 무지 밴드 반바지 PAN1456 그레이', 22500, '30사이즈', '남성용', '6-1.png', NULL, '출시 연도: 2022년도 / 출시 계절: 여름 / 사용대상 구분: 남녀공용');
 INSERT INTO PRODUCT VALUES (PRONUM_SEQ.NEXTVAL, '앨빈클로 핀턱 무지 밴드 반바지 PAN1456 블랙', 23500, '32사이즈', '남성용', '7-1.png', NULL, '출시 연도: 2022년도 / 출시 계절: 여름 / 사용대상 구분: 남녀공용');
 INSERT INTO PRODUCT VALUES (PRONUM_SEQ.NEXTVAL, '앨빈클로 핀턱 무지 밴드 반바지 PAN1456 백염', 21500, '34사이즈', '남성용', '8-1.png', NULL, '출시 연도: 2022년도 / 출시 계절: 여름 / 사용대상 구분: 남녀공용');
+INSERT INTO PRODUCT VALUES (PRONUM_SEQ.NEXTVAL, '미쏘 여성용 싱글 2버튼 테일러드 숏자켓 베이지', 33820, 'S사이즈', '여성용', '9-1.png', '9-2.png', '상의 길이: 기본 / 소재: 폴리에스터 / 출시 연도: 2022년도 / 출시 계절: 봄');
+INSERT INTO PRODUCT VALUES (PRONUM_SEQ.NEXTVAL, '미쏘 여성용 싱글 2버튼 테일러드 숏자켓 블랙', 33820, 'XS사이즈', '여성용', '10-1.png', '10-2.png', '상의 길이: 기본 / 소재: 폴리에스터 / 출시 연도: 2022년도 / 출시 계절: 봄');
+INSERT INTO PRODUCT VALUES (PRONUM_SEQ.NEXTVAL, '해리슨 남성용 데님 팬츠 5037 JIM1242 연청', 25800, '46사이즈', '남성용', '11-1.png', NULL, '출시 계절: 가을 / 사용계절: 사계절용 / 색상계열: 블루계열 / 세탁방법 및 취급시 주의사항 : 30도 미만의 미지근한물에서 손세탁,물세탁,단독세탁');
+INSERT INTO PRODUCT VALUES (PRONUM_SEQ.NEXTVAL, '해리슨 남성용 데님 팬츠 5037 JIM1242 흑청', 25800, '48사이즈', '남성용', '12-1.png', NULL, '출시 계절: 가을 / 사용계절: 사계절용 / 색상계열: 블랙계열 / 세탁방법 및 취급시 주의사항 : 30도 미만의 미지근한물에서 손세탁,물세탁,단독세탁');
+INSERT INTO PRODUCT VALUES (PRONUM_SEQ.NEXTVAL, '미쏘 테일러드 셔츠 블라우스', 18970, '50사이즈', '여성용', '13-1.png', NULL, '스타일: 셔츠 / 사용대상 구분: 여성용 / 상의 사이즈: 여성 M (66, 95) / 출시 연도: 2023년도 / 소매 길이: 긴소매(손목 이상 길이)');
+INSERT INTO PRODUCT VALUES (PRONUM_SEQ.NEXTVAL, '미쏘 여성용 라운드넥 베이직 풀오버 블랙', 12660, 'S사이즈', '여성용', '14-1.png', '14-2.png', '출시 연도: 2022년도 / 출시 계절: 봄 / 사용계절: 봄/가을용 / 색상계열: 블랙계열');
+INSERT INTO PRODUCT VALUES (PRONUM_SEQ.NEXTVAL, '미쏘 여성용 라운드넥 베이직 풀오버 아이보리', 12660, 'XXS사이즈', '여성용', '15-1.png', '15-2.png', '출시 연도: 2022년도 / 출시 계절: 봄 / 사용계절: 봄/가을용 / 색상계열: 화이트계열');
+INSERT INTO PRODUCT VALUES (PRONUM_SEQ.NEXTVAL, '미쏘 여성용 라운드넥 베이직 풀오버 라이트블루', 12660, 'XS사이즈', '여성용', '16-1.png', '16-2.png', '출시 연도: 2022년도 / 출시 계절: 봄 / 사용계절: 봄/가을용 / 색상계열: 블루계열');
+INSERT INTO PRODUCT VALUES (PRONUM_SEQ.NEXTVAL, '미쏘 여성용 라운드넥 베이직 풀오버 라이트옐로우', 12660, 'S사이즈', '여성용', '17-1.png', '17-2.png', '출시 연도: 2022년도 / 출시 계절: 봄 / 사용계절: 봄/가을용 / 색상계열: 옐로우계열');
 SELECT * FROM PRODUCT;
 
 ------------------------------------------------------------------------WISHLIST
@@ -77,6 +86,7 @@ INSERT INTO WISHLIST VALUES (WISHNUM_SEQ.NEXTVAL, 'bbbb', 2);
 INSERT INTO WISHLIST VALUES (WISHNUM_SEQ.NEXTVAL, 'cccc', 3);
 INSERT INTO WISHLIST VALUES (WISHNUM_SEQ.NEXTVAL, 'cccc', 4);
 INSERT INTO WISHLIST VALUES (WISHNUM_SEQ.NEXTVAL, 'cccc', 1);
+SELECT * FROM WISHLIST;
 
 ---------------------------------------------------------------------------BOARD
 DROP SEQUENCE BOARDNUM_SEQ;

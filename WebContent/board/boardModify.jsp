@@ -50,7 +50,7 @@
 					<tr>
 						<td colspan="2">
 							<input type="submit" value="수정하기" class="btn">
-							<input type="reset" class="btn">
+							<input type="reset" value="이전" class="btn">
 							<input type="button" value="글목록" class="btn" onclick="location.href='${conPath }/boardList.do?pageNum=${param.pageNum }'">
 						</td>
 					</tr>

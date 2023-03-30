@@ -9,7 +9,13 @@ public class ProductListService implements Service {
 	@Override
 	public void execute(HttpServletRequest request, HttpServletResponse response) {
 		String pageNum = request.getParameter("pageNum");
-		if(pageNum==null) pageNum = "1";
+		if(pageNum==null) {
+			if(request.getAttribute("pageNum")!=null) {
+				pageNum = (String)request.getAttribute("pageNum");
+			} else {
+				pageNum = "1";
+			}
+		}
 //		String mid = request.getParameter("mid");
 //		String mname = request.getParameter("mname");
 		String pname = request.getParameter("pname");

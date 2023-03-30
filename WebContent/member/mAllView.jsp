@@ -21,14 +21,14 @@
 		}
 	</style>
 	<script src="https://code.jquery.com/jquery-3.6.4.js"></script>
-	<script>
+	<!-- <script>
 		$(document).ready(function() {
 			$('td').click(function() {
-				$(this).attr('class') 
-				location.href="${conPath }/modifyView.do?mid=${dto.mid}";
+				var mid = $(this).attr('class');
+				location.href="${conPath }/modifyView.do?mid="+mid;
 			});
 		});
-	</script>
+	</script> -->
 </head>
 <body>
 	<c:if test="${not empty adminLoginResult }">
@@ -63,6 +63,7 @@
 				<c:if test="${BLOCKSIZE < startPage }">
 					[ <a href="${conPath }/allView.do?pageNum=${startPage-1 }"> 이전 </a> ]
 				</c:if>
+				&nbsp;
 				<c:forEach var="i" begin="${startPage }" end="${endPage }">
 					<c:if test="${i eq pageNum }">
 						[ <b> ${i } </b> ]
@@ -71,6 +72,7 @@
 						[ <a href="${conPath }/allView.do?pageNum=${i }"> ${i } </a> ]
 					</c:if>
 				</c:forEach>
+				&nbsp;
 				<c:if test="${endPage < pageCnt }">
 					[ <a href="${conPath }/allView.do?pageNum=${endPage+1 }"> 다음 </a> ]
 				</c:if>

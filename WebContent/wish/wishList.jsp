@@ -43,21 +43,26 @@
 		<div class="content">
 			<table>
 				<caption>${member.mname }(${member.mid })님의 관심목록</caption>
-				<c:forEach var="wish" items="${wishList }">
-					<c:set var="no" value="${no+1 }"/>
-					<tr>
-						<td style="display:none">${wish.wid }</td>
-						<td colspan="2" style="background-color:#808080">${no }번째 관심목록</td>
-					</tr>
-					<tr>
-						<th>상품번호</th>
-						<td>${wish.pid }</td>
-					</tr>
-					<tr>
-						<th>상품명</th>
-						<td>${wish.pname }</td>
-					</tr>
-				</c:forEach>
+				<c:if test="${wishList.size() eq 0 }">
+					<tr><td colspan="2">관심상품이 없습니다</td></tr>
+				</c:if>
+				<c:if test="${wishList.size() != 0 }">
+					<c:forEach var="wish" items="${wishList }">
+						<c:set var="no" value="${no+1 }"/>
+						<tr>
+							<td style="display:none">${wish.wid }</td>
+							<td colspan="2" style="background-color:#808080">${no }번째 관심목록</td>
+						</tr>
+						<tr>
+							<th>상품번호</th>
+							<td>${wish.pid }</td>
+						</tr>
+						<tr>
+							<th>상품명</th>
+							<td>${wish.pname }</td>
+						</tr>
+					</c:forEach>
+				</c:if>
 			</table>
 			<div class="paging">
 				<c:if test="${startPage > BLOCKSIZE }">

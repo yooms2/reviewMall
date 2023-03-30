@@ -16,6 +16,9 @@
 		#content table tr {
 			cursor: pointer;
 		}
+		.paging {
+			margin-top: 20px;
+		}
 	</style>
 	<script src="https://code.jquery.com/jquery-3.6.4.js"></script>
 	<script>
@@ -65,11 +68,11 @@
 								<c:if test="${not empty board.bfilename }">
 									<img src="${conPath }/img/file.jpg" width="15">
 								</c:if>
-								<c:if test="${board.brdate eq  today }">
-									<img src="${conPath }/img/new.png" width="15">
-								</c:if>
 								<c:if test="${board.bhit > 20 }">
 									<img src="${conPath }/img/hot.png" width="25">
+								</c:if>
+								<c:if test="${board.brdate eq  today }">
+									<img src="${conPath }/img/new.png" width="15">
 								</c:if>
 							</td>
 							<td>${board.mnickname }</td>
@@ -83,6 +86,7 @@
 				<c:if test="${startPage > BLOCKSIZE }">
 					[ <a href="${conPath }/boardList.do?pageNum=${startPage-1 }"> 이전 </a> ]
 				</c:if>
+				&nbsp;
 				<c:forEach var="i" begin="${startPage }" end="${endPage }">
 					<c:if test="${i == pageNum }">
 						[ <b> ${i } </b> ]
@@ -91,6 +95,7 @@
 						[ <a href="${conPath }/boardList.do?pageNum=${i }"> ${i } </a> ]
 					</c:if>
 				</c:forEach>
+				&nbsp;
 				<c:if test="${endPage < pageCnt }">
 					[ <a href="${conPath }/boardList.do?pageNum=${endPage+1 }"> 다음 </a> ]
 				</c:if>
