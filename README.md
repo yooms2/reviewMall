@@ -18,15 +18,15 @@
 메인 페이지 img
 
 ## 목차
-[1. 작업분할 구조도]()<br>
-[2. Gantt Chart]()<br>
-[3. 이용자 권한]()<br>
-[4. Usecase Diagram]()<br>
-[5. Sequence Diagram]()<br>
-[6. 기능정의서]()<br>
-[7. E-R Diagram]()<br>
-[8. Project Source Explorer]()<br>
-[9. 실행화면 설명]()<br>
+[1. 작업분할 구조도](https://github.com/yooms2/reviewmall#%EC%9E%91%EC%97%85%EB%B6%84%ED%95%A0%EB%8F%84)<br>
+[2. Gantt Chart](https://github.com/yooms2/reviewmall#gantt-chart)<br>
+[3. 이용자 권한](https://github.com/yooms2/reviewmall#%EC%9D%B4%EC%9A%A9%EC%9E%90-%EA%B6%8C%ED%95%9C)<br>
+[4. Usecase Diagram](https://github.com/yooms2/reviewmall#usecase-diagram)<br>
+[5. Sequence Diagram](https://github.com/yooms2/reviewmall#sequence-diagram)<br>
+[6. 기능정의서](https://github.com/yooms2/reviewmall#%EA%B8%B0%EB%8A%A5%EC%A0%95%EC%9D%98%EC%84%9C)<br>
+[7. E-R Diagram](https://github.com/yooms2/reviewmall#e-r-diagram)<br>
+[8. Project Source Explorer](https://github.com/yooms2/reviewmall#project-source-explorer)<br>
+[9. 실행화면 설명](https://github.com/yooms2/reviewmall#%EC%8B%A4%ED%96%89%ED%99%94%EB%A9%B4-%EC%84%A4%EB%AA%85)<br>
 
 ## 작업분할도
 ![1 작업분할도](https://user-images.githubusercontent.com/119547439/228998567-4086ec20-3107-4aba-9418-c33ef249b6ca.JPG)
@@ -41,8 +41,7 @@
 ![4 useCaseDiagram](https://user-images.githubusercontent.com/119547439/228998798-da8b10ce-89d5-439b-86ca-18c55c1472aa.JPG)
 
 ## Sequence Diagram
-![5 sequenceDiagram](https://user-images.githubusercontent.com/119547439/228998812-11d06bce-bf4d-4fb1-a8fb-
-dc9bdd737177.JPG)
+![5 sequenceDiagram](https://user-images.githubusercontent.com/119547439/229000265-99dc6d2d-d947-46ca-9309-f77ea3d0c10c.JPG)
 ![6 sequenceDiagram](https://user-images.githubusercontent.com/119547439/228998817-39c80bf7-a117-462b-9e1b-91adff5f2793.JPG)
 
 ## 기능정의서
