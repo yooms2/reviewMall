@@ -18,14 +18,42 @@
 메인 페이지 img
 
 ## 목차
-[1. 작업분할 구조도]
-[2. Gantt Chart]
-[3. 이용자 권한]
-[4. Usecase Diagram]
-[5. Sequence Diagram]
-[6. 기능정의서]
-[7. E-R Diagram]
-[8. Project Source Explorer]
-[9. 실행화면 설명]
+[1. 작업분할 구조도]()<br>
+[2. Gantt Chart]()<br>
+[3. 이용자 권한]()<br>
+[4. Usecase Diagram]()<br>
+[5. Sequence Diagram]()<br>
+[6. 기능정의서]()<br>
+[7. E-R Diagram]()<br>
+[8. Project Source Explorer]()<br>
+[9. 실행화면 설명]()<br>
 
-1. 작업분할도부터 실행화면까지 img
+## 작업분할도
+![1 작업분할도](https://user-images.githubusercontent.com/119547439/228998567-4086ec20-3107-4aba-9418-c33ef249b6ca.JPG)
+
+## Gantt Chart
+![2 ganttChart](https://user-images.githubusercontent.com/119547439/228998679-6e30b52f-db00-475a-97f0-9ba4f70841f7.JPG)
+
+## 이용자 권한
+![3 이용자권한](https://user-images.githubusercontent.com/119547439/228998686-65ce1bae-1a00-40ce-b304-35093f942732.JPG)
+
+## UseCase Diagram
+![4 useCaseDiagram](https://user-images.githubusercontent.com/119547439/228998798-da8b10ce-89d5-439b-86ca-18c55c1472aa.JPG)
+
+## Sequence Diagram
+![5 sequenceDiagram](https://user-images.githubusercontent.com/119547439/228998812-11d06bce-bf4d-4fb1-a8fb-
+dc9bdd737177.JPG)
+![6 sequenceDiagram](https://user-images.githubusercontent.com/119547439/228998817-39c80bf7-a117-462b-9e1b-91adff5f2793.JPG)
+
+## 기능정의서
+![7 기능정의서](https://user-images.githubusercontent.com/119547439/228998824-2360c525-0b23-418c-97ab-0319e6a5118b.JPG)
+
+## E-R Diagram
+![8 e-rDiagram](https://user-images.githubusercontent.com/119547439/228999055-d7a402ff-2953-4d9a-ac8c-56e958b8e0b2.JPG)
+
+## Project Source Explorer
+![9 projectSourceExplorer](https://user-images.githubusercontent.com/119547439/228999059-fa43b9bb-b278-4a5b-8620-54b74499be77.JPG)
+
+## 실행화면 설명
+![10 실행화면](https://user-images.githubusercontent.com/119547439/228999062-4f7b7076-ae42-44c1-8adf-7ebae0b01fd1.JPG)
+![10 실행화면2](https://user-images.githubusercontent.com/119547439/228999069-b0a3f67d-1a47-4b6e-8f74-cd8d4ffab500.JPG)
