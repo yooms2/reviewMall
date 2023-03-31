@@ -8,7 +8,40 @@
 <head>
 	<meta charset="UTF-8">
 	<title>Insert title here</title>
-	<link href="${conPath }/css/header.css" rel="stylesheet">
+	<style>
+		* {
+			padding: 0;
+		}
+		#header {
+			background-color: #808080;
+			/* position: fixed; */
+		}
+		#header .logo img {
+			width: 350px;
+			text-align: center;
+			margin: 0 auto;
+			cursor: pointer;
+		}
+		#header a {
+			text-decoration: none;
+			color: black;
+			font-size: 13pt;
+		}
+		#header .gnb {
+			min-width: 800px;
+		}
+		#header .gnb ul {
+			margin: 0 auto;
+			overflow: hidden;
+		}
+		#header .gnb ul li {
+			float: right;
+			list-style: none;
+			margin-right: 30px;
+			padding-bottom: 10px;
+			font-weight: bold;
+		}
+	</style>
 </head>
 <body>
 	<div id="header">
