@@ -8,7 +8,7 @@
 <head>
 	<meta charset="UTF-8">
 	<title>Insert title here</title>
-	<link href="${conPath }/css/style2.css" rel="stylesheet">
+	<link href="${conPath }/css/style.css" rel="stylesheet">
 	<style>
 		
 	</style>
@@ -18,7 +18,7 @@
 		<div class="header">
 		<jsp:include page="../main/header.jsp"/>
 		</div>
-		<div class="content">
+		<div id="content">
 			<form action="${conPath }/productAdd.do" method="post" enctype="multipart/form-data">
 				<table>
 					<caption>상품등록</caption>

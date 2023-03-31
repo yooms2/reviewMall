@@ -11,10 +11,11 @@
 	<link href="${conPath }/css/style2.css" rel="stylesheet">
 	<style>
 		tr:nth-child(3n+1):hover {
-			color: blue;
+			color: skyblue;
 			cursor: pointer;
 			font-weight: bold;
 		}
+		
 	</style>
 	<script src="https://code.jquery.com/jquery-3.6.4.js"></script>
 	<script>
@@ -51,7 +52,7 @@
 						<c:set var="no" value="${no+1 }"/>
 						<tr>
 							<td style="display:none">${wish.wid }</td>
-							<td colspan="2" style="background-color:#808080">${no }번째 관심목록</td>
+							<td colspan="2" style="background-color:#d9d9d9">${no }번째 관심목록</td>
 						</tr>
 						<tr>
 							<th>상품번호</th>

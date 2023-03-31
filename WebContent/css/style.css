@@ -31,7 +31,7 @@
 	font-size: .8em;
 }
 #content table tr th, #content table tr td {
-	background-color: lightgray;
+	background-color: #f4f9ce;
 	height: 40px;
 	text-align: center;
 	padding: 5px;

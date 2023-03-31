@@ -8,7 +8,7 @@
 <head>
 	<meta charset="UTF-8">
 	<title>Insert title here</title>
-	<link href="${conPath }/css/style2.css" rel="stylesheet">
+	<link href="${conPath }/css/style.css" rel="stylesheet">
 </head>
 <body>
 	<c:if test="${empty member}">
@@ -21,7 +21,7 @@
 		<div class="header">
 		<jsp:include page="../main/header.jsp"/>
 		</div>
-		<div class="content">
+		<div id="content">
 			<form action="${conPath }/boardReply.do" method="post" enctype="multipart/form-data">
 				<input type="hidden" name="bgroup" value="${oriBoard.bgroup }">
 				<input type="hidden" name="bstep" value="${oriBoard.bstep }">

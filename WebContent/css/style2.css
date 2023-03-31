@@ -31,10 +31,11 @@ html, body {
 	font-size: .4em;
 	width: 315px; height: 40px;
 	border: 1px solid lightgray;
+	background-color: #f4f9ce;
 	cursor: pointer;
 }
 .content td:hover {
-	background-color: lightgray;
+	background-color: #f4f9ce;
 }
 .content tr td img {
 	width: 270px;

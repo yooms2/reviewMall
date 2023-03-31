@@ -3,7 +3,7 @@
 body {
 	display: flex; justify-content: center;
 	align-items: center; height: 100vh;
-	background-color: #808080;
+	background-color: #f4f9ce;
 }
 body::before {
 	content: ""; position: absolute; z-index: 1;
